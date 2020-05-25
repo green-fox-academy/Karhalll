@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  min-width: 500px;
+  font-family: Consolas;
+  font-size: large;
+  background-image: url("assets/background.png");
+}
+
+header {
+  background-color: #333333;
+  margin: 0 auto;
+  padding: 10px 10%;
+  display: flex;
+}
+
+section {
+  margin: 100px auto;
+  padding: 0 10%;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Merriweather', serif; 
+  font-weight: 900;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+a { 
+  margin-left: 30px;
+  color: #ff0099;
+  font-size: medium;
+  text-transform: uppercase;
+}
+
+#logo {
+  margin: auto;
+  margin-left: 0;
+}
+
+#links {
+  margin: auto 0;
+}
+
+.pink {
+  color: #ff0099;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+h3.pink {
+  font-size: 30px;
+}
+
+h5.pink {
+  font-size: 20px;
+}
+
+#separator {
+  margin: 50px auto;
+  width: 100px;
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+#tech-wiki h2 {
+  margin: 0 auto;
+  width: 300px;
+  text-align: center;
+  font-size: 30px;
+}
+
+#tech-wiki h3 {
+  margin-top: 50px;
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+#tech-wiki p {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 25px;
+}

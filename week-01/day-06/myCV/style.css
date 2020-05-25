@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  padding: 0 10%;
+  display: flex;
+  font-family: 'Oswald', sans-serif;
+}
+
+header {
+  width: 33%;
+  min-width: 260px;
+  background-color: rgb(65, 63, 63);
+  color: white;
+}
+
+header h1 {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#profile-picture {
+  margin: 20%;
+  margin-bottom: 20px;
+}
+
+#profile-picture img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  filter: grayscale(100%);
+}
+
+.sum-block {
+  margin: 0 10%;
+}
+
+.sum-block h1 {
+  margin-bottom: 0;
+}
+
+.sum-block ul {
+  margin-top: 0;
+  padding: 0;
+  list-style-type: none;
+  border-style: solid;
+  border-width:  0 0 0.7px;
+  border-color: black;
+}
+
+.sum-block li {
+  display: flex;
+  padding: 2px 0;
+  border-style: solid;
+  border-width: 0.7px 0 0;
+  border-color: black;
+}
+
+.sum-block ul h2 {
+  margin: 0;
+  width: 33%;
+  font-weight: 500;
+  font-size: 10px;
+}
+
+.sum-block ul p {
+  margin: 0;
+  width: 66%;
+  font-weight: 300;
+  font-size: 10px;
+}
+
+section {
+  width: 66%;
+  min-width: 300px;
+  padding: 0 5%;
+}
+
+section h1 {
+  margin-bottom: 10px;
+  line-height: 1;
+  font-weight: 500;
+  font-size: 50px;
+}
+
+section h2 {
+  margin-top: 0;
+  line-height: 1;
+  font-weight: 300;
+  font-size: 20px;
+  color: gray;
+}
+
+#name {
+  margin-bottom: 60px;
+}
+
+.section {
+  margin: 0;
+  margin-bottom: 50px;
+}
+
+.section h3{
+  margin: 0;
+  margin-right: 20px;
+  width: auto;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.section p {
+  text-align: justify;
+  margin: 0;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.sec-header {
+  display: flex;
+  height: 100%;
+}
+
+.line {
+  margin: auto;
+  display: flex;
+  width: 100%;
+  height: 0;
+}
+
+.line.grey{
+  margin: auto 0;
+  width: 100%;
+  height: 0;
+  border-style: solid;
+  border-width: 1.5px 0 0;
+  border-color: rgb(209, 209, 209);
+}
+
+.line.black{
+  margin: auto 0;
+  width: 100px;
+  min-width: 100px;
+  height: 0;
+  border-style: solid;
+  border-width: 3px 0 0;
+  border-color: rgb(73, 73, 73);
+}
+
+.sec-item h1 {
+  margin-bottom: 5px;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+.sec-item h2 {
+  font-size: 15px;
+}
+
+
