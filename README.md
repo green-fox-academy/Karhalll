@@ -1,6 +1,6 @@
 # Martin Fučík
 
-## Martin Fučík's repository for Green Fox Academy course.
+### Martin Fučík's repository for Green Fox Academy course.
 
 
 [My CV](https://karhalll.github.io "Still not completed :P")
