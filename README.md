@@ -3,7 +3,7 @@
 Martin Fučík's repository for Green Fox Academy course.
 
 
-[My CV](https://github.com/green-fox-academy/prg-iceage-syllabus "Still not completed :P")
+[My CV](https://karhalll.github.io "Still not completed :P")
 
 [Iceage Syllabus repo](https://github.com/green-fox-academy/prg-iceage-syllabus "Best syllabus for best study group")
 
