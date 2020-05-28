@@ -20,7 +20,7 @@ public class DrawPyramid {
 
     for (int i = 1; i <= number; i++) {
       String whiteSpaces = "";
-      for ( int j = 1; j <= (number - i); j++) {
+      for (int j = 1; j <= (number - i); j++) {
         whiteSpaces += " ";
       }
 
