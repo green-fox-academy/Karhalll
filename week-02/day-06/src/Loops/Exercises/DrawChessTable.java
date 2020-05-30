@@ -16,7 +16,7 @@ public class DrawChessTable {
 
     for (int i = 0; i < boardSize; i++) {
       String line = "";
-      for (int j = 0; j < boardSize/2; j++) {
+      for (int j = 0; j < boardSize / 2; j++) {
         if (i % 2 == 0) {
           line += "% ";
         } else {
