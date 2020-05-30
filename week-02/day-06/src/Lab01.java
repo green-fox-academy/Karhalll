@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Lab01 {
   Scanner scanner = new Scanner(System.in);
 
-  int vyberOperace = 0;
+  int operationChoice = 0;
   float operand1 = 0f;
   float operand2 = 0f;
   int numberOfDecimals = 1;
@@ -23,9 +23,9 @@ public class Lab01 {
         continue;
       }
 
-      vyberOperace = scanner.nextInt();
+      operationChoice = scanner.nextInt();
 
-      switch (vyberOperace) {
+      switch (operationChoice) {
         case 1:
           operator = '+';
           askForInput("scitanec", "scitanec");
@@ -60,7 +60,7 @@ public class Lab01 {
     while (true) {
       askForFloat(operand2Name);
       operand2 = scanner.nextFloat();
-      if (vyberOperace != 4 || operand2 != 0f) {
+      if (operationChoice != 4 || operand2 != 0f) {
         break;
       }
       System.out.println("Chyba - pokus o deleni nulou!");
