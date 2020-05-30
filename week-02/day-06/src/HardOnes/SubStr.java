@@ -14,6 +14,8 @@ public class SubStr {
 
     //  should print: `-1`
     System.out.println(subStr("this is what I'm searching in", "not"));
+
+    System.out.println(subStr("Bla bla bla bla bla glum bla bla bla bla", "glum"));
   }
 
   public static int subStr(String input, String q) {
