@@ -1,17 +1,16 @@
 import java.util.Scanner;
 
-public class DrawSquare {
+public class DrawDiagonal {
   public static void main(String[] args) {
     // Write a program that reads a number from the standard input, then draws a
     // square like this:
     //
     //
-    // %%%%%%
-    // %    %
-    // %    %
-    // %    %
-    // %    %
-    // %%%%%%
+    // %%%%%
+    // %%  %
+    // % % %
+    // %  %%
+    // %%%%%
     //
     // The square should have as many lines as the number was
 
@@ -33,10 +32,15 @@ public class DrawSquare {
       // Square content
       for (int i = 0; i < number - 2; i++) {
         String whiteSpaces = "";
-        for (int j = 0; j < number - 2; j++) {
+        for (int j = 0; j < i; j++) {
           whiteSpaces += " ";
         }
-        System.out.println("%" + whiteSpaces + "%");
+
+        String whiteSpacesRev = "";
+        for (int j = number - 3 - i; j > 0; j--) {
+          whiteSpacesRev += " ";
+        }
+        System.out.println("%" + whiteSpaces + "%" + whiteSpacesRev + "%");
       }
 
       // Downer side of the square
