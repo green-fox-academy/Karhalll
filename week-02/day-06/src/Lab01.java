@@ -7,6 +7,7 @@ public class Lab01 {
   float operand1 = 0f;
   float operand2 = 0f;
   int numberOfDecimals = 1;
+  char operator = '+';
 
   public void start(String[] args) {
     homework();
@@ -26,16 +27,24 @@ public class Lab01 {
 
       switch (vyberOperace) {
         case 1:
-          soucet();
+          operator = '+';
+          askForInput("scitanec", "scitanec");
+          printResult(operand1 + operand2);
           break;
         case 2:
-          rodil();
+          operator = '-';
+          askForInput("mensenec", "mensitel");
+          printResult(operand1 - operand2);
           break;
         case 3:
-          soucin();
+          operator = '*';
+          askForInput("cinitel", "cinitel");
+          printResult(operand1 * operand2);
           break;
         case 4:
-          podil();
+          operator = '/';
+          askForInput("delenec", "delitel");
+          printResult(operand1 / operand2);
           break;
         default:
           invalidInputText();
@@ -44,60 +53,12 @@ public class Lab01 {
     }
   }
 
-  private void soucet() {
-    String operand1Name = "scitanec";
-    String operand2Name = "scitanec";
-    char operator = '+';
-
-    askForInput(operand1Name, operand2Name, operator);
-
-    float result = operand1 + operand2;
-
-    printResult(result, operator);
-  }
-
-  private void rodil() {
-    String operand1Name = "mensenec";
-    String operand2Name = "mensitel";
-    char operator = '-';
-
-    askForInput(operand1Name, operand2Name, operator);
-
-    float result = operand1 - operand2;
-
-    printResult(result, operator);
-  }
-
-  private void soucin() {
-    String operand1Name = "cinitel";
-    String operand2Name = "cinitel";
-    char operator = '*';
-
-    askForInput(operand1Name, operand2Name, operator);
-
-    float result = operand1 * operand2;
-
-    printResult(result, operator);
-  }
-
-  private void podil() {
-    String operand1Name = "delenec";
-    String operand2Name = "delitel";
-    char operator = '/';
-
-    askForInput(operand1Name, operand2Name, operator);
-
-    float result = operand1 / operand2;
-
-    printResult(result, operator);
-  }
-
-  private void askForInput(String operand1Name, String operand2Name, char operator) {
+  private void askForInput(String operand1Name, String operand2Name) {
     askForFloat(operand1Name);
     operand1 = scanner.nextFloat();
 
     while (true) {
-      askForFloat(operand1Name);
+      askForFloat(operand2Name);
       operand2 = scanner.nextFloat();
       if (vyberOperace != 4 || operand2 != 0f) {
         break;
@@ -141,7 +102,7 @@ public class Lab01 {
     System.out.print("Zadej " + operandName + ": ");
   }
 
-  private void printResult(float result, char operator) {
+  private void printResult(float result) {
     System.out.print(numberToText(operand1) + " " + operator + " " + numberToText(operand2));
     System.out.print(" = " + numberToText(result) + "\n");
   }
