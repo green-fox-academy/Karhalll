@@ -11,8 +11,8 @@ public class DiagonalMatrix {
     // - Print this two dimensional array to the output
 
     int lines = 4;
-    int colums = 4;
-    int[][] matrix = new int[lines][colums];
+    int columns = 4;
+    int[][] matrix = new int[lines][columns];
 
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix[i].length; j++) {
