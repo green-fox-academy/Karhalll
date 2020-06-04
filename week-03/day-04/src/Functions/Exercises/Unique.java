@@ -11,7 +11,7 @@ public class Unique {
   }
 
   public static String unique(int[] numbers) {
-    ArrayList<Integer> numbersList= new ArrayList<Integer>();
+    ArrayList<Integer> numbersList = new ArrayList<Integer>();
 
     for (int number:numbers) {
       numbersList.add(number);

@@ -27,7 +27,7 @@ public class SubInt {
 
     if (indexes != "") {
       StringBuffer text = new StringBuffer(indexes);
-      text.replace( text.length() - 2 ,text.length() ,"");
+      text.replace(text.length() - 2, text.length(), "");
       indexes = text.toString();
     }
 
