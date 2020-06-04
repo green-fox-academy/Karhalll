@@ -11,8 +11,8 @@ public class PalindromeSearcher {
   public static String palindromeSearcher(String string) {
     ArrayList<String> palindromes = new ArrayList<String>();
     for (int i = 0; i < string.length(); i++) {
-      for (int j = i + 1; j <= string.length(); j++) {
-        if (isPalindrome(string.substring(i, j)) && string.substring(i, j).length() >= 3) {
+      for (int j = i + 3; j <= string.length(); j++) {
+        if (isPalindrome(string.substring(i, j))) {
           palindromes.add(string.substring(i, j));
         }
       }
