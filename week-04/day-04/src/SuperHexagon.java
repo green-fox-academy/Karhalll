@@ -6,15 +6,39 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
 
   public static void mainDraw(Graphics graphics) {
-    int twiceV = HEIGHT/7;
+
+    int dimension = 7;
+
+    int twiceV = HEIGHT / (dimension + 1);
     int v = twiceV/2;
-    for (int i = 0; i < 7; i++) {
-      drawHexagon(WIDTH/2, v + i * HEIGHT/7, v, graphics);
+
+    int side = (int) (v * 2d / Math.sqrt(3d));
+
+    int hexagonsInColumn = dimension/2;
+    for (int i = 0; i < dimension; i++) {
+      if (i <= dimension/2) {
+        hexagonsInColumn++;
+        for (int j = 0; j < hexagonsInColumn; j++) {
+          if (i % 2 == 0) {
+            drawHexagon(side*2 + i * side*3/2, v + j * 2 * v + v*(dimension/2 + 1 - i), side, v, graphics);
+          } else {
+            drawHexagon(side*2 + i * side*3/2,  v + j*2 * v + v*(dimension/2 + 1 - i), side, v, graphics);
+          }
+        }
+      } else {
+        hexagonsInColumn--;
+        for (int j = 0; j < hexagonsInColumn; j++) {
+          if (i % 2 == 0) {
+            drawHexagon(side*2 + i * side*3/2, v + j * 2 * v + v*(i - dimension/2 + 1), side, v, graphics);
+          } else {
+            drawHexagon(side*2 + i * side*3/2, v + j * 2 * v + v*(i - dimension/2 + 1), side, v, graphics);
+          }
+        }
+      }
     }
   }
 
-  public static void drawHexagon(int posX, int posY, int v, Graphics graphics) {
-    int side = (int) (v * 2 / Math.sqrt(3));
+  public static void drawHexagon(int posX, int posY, int side, int v, Graphics graphics) {
 
     int[] x = {side/2, side, side/2, -side/2, -side, -side/2};
     int[] y = {-v, 0, v, v, 0, -v};
