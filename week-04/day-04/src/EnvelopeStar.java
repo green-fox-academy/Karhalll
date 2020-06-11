@@ -4,40 +4,52 @@ import javax.swing.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class LinePlayQuarters {
+public class EnvelopeStar {
 
   public static void mainDraw(Graphics graphics) {
 
-    int segments = 256; //Also works for 4/16/64. All any power of 2 ;)
+    int segments = 4;
     int sideSegments = (int) Math.sqrt(segments);
 
-    for (int i = 0; i < sideSegments; i++) {
-      for (int j = 0; j < sideSegments; j++) {
-        drawSegment(
-            i * WIDTH/sideSegments,
-            j * HEIGHT/sideSegments,
-            sideSegments,
-            graphics);
-      }
-    }
-  }
-
-  public static void drawSegment(int xPlus, int yPlus, int sideSegments, Graphics graphics) {
     int lines = 15;
 
     int quarterX = WIDTH/sideSegments;
-    int quarterY = HEIGHT/sideSegments;
+    int quarterY = HEIGHT /sideSegments;
 
     for (int i = 1; i < lines; i++) {
 
       int xPos = i * quarterX / lines;
       int yPos = i * quarterY / lines;
       graphics.setColor(Color.GREEN);
-      graphics.drawLine(xPlus + 0, yPlus + yPos, xPlus + xPos, yPlus + quarterY);
-
-      graphics.setColor(new Color(182, 111, 240));
-      graphics.drawLine(xPlus + xPos, yPlus + 0, xPlus + quarterX, yPlus + yPos);
+      graphics.drawLine(quarterX, yPos, quarterX - xPos, quarterY);
     }
+
+    for (int i = 1; i < lines; i++) {
+
+      int xPos = i * quarterX / lines;
+      int yPos = i * quarterY / lines;
+      graphics.setColor(Color.GREEN);
+      graphics.drawLine(quarterX, yPos, quarterX + xPos, quarterY);
+    }
+
+    for (int i = 1; i < lines; i++) {
+
+      int xPos = i * quarterX / lines;
+      int yPos = i * quarterY / lines;
+      graphics.setColor(Color.GREEN);
+      graphics.drawLine(quarterX, quarterY + yPos, xPos, quarterY);
+    }
+
+    for (int i = 1; i < lines; i++) {
+
+      int xPos = i * quarterX / lines;
+      int yPos = i * quarterY / lines;
+      graphics.setColor(Color.GREEN);
+      graphics.drawLine(quarterX, quarterY + yPos, 2*quarterX - xPos, quarterY);
+    }
+
+    graphics.drawLine(quarterX, 0, quarterX , 2*quarterY);
+
   }
 
   // Don't touch the code below
@@ -45,7 +57,7 @@ public class LinePlayQuarters {
   static int HEIGHT = 320;
 
   public static void main(String[] args) {
-    JFrame jFrame = new JFrame("Line Play Quarters");
+    JFrame jFrame = new JFrame("Envelope Star");
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     ImagePanel panel = new ImagePanel();
     panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
