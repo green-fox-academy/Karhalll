@@ -16,23 +16,19 @@ public class SuperHexagon {
 
     int hexagonsInColumn = dimension/2;
     for (int i = 0; i < dimension; i++) {
+      int posX = side*2 + i * side*3/2;
+      int posY = 0;
       if (i <= dimension/2) {
         hexagonsInColumn++;
         for (int j = 0; j < hexagonsInColumn; j++) {
-          if (i % 2 == 0) {
-            drawHexagon(side*2 + i * side*3/2, v + j * 2 * v + v*(dimension/2 + 1 - i), side, v, graphics);
-          } else {
-            drawHexagon(side*2 + i * side*3/2,  v + j*2 * v + v*(dimension/2 + 1 - i), side, v, graphics);
-          }
+          posY = v + j * 2 * v + v*(dimension/2 + 1 - i);
+          drawHexagon(posX, posY, side, v, graphics);
         }
       } else {
         hexagonsInColumn--;
         for (int j = 0; j < hexagonsInColumn; j++) {
-          if (i % 2 == 0) {
-            drawHexagon(side*2 + i * side*3/2, v + j * 2 * v + v*(i - dimension/2 + 1), side, v, graphics);
-          } else {
-            drawHexagon(side*2 + i * side*3/2, v + j * 2 * v + v*(i - dimension/2 + 1), side, v, graphics);
-          }
+          posY = v + j * 2 * v + v*(i - dimension/2 + 1);
+          drawHexagon(posX, posY, side, v, graphics);
         }
       }
     }
@@ -52,11 +48,11 @@ public class SuperHexagon {
   }
 
   // Don't touch the code below
-  static int WIDTH = 630;
-  static int HEIGHT = 630;
+  static int WIDTH = 640;
+  static int HEIGHT = 640;
 
   public static void main(String[] args) {
-    JFrame jFrame = new JFrame("Triangles");
+    JFrame jFrame = new JFrame("Super Hexagon");
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     ImagePanel panel = new ImagePanel();
     panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
