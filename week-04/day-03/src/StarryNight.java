@@ -1,7 +1,5 @@
-import java.util.Random;
-import javax.swing.*;
-
 import java.awt.*;
+import javax.swing.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -13,18 +11,28 @@ public class StarryNight {
     //  - The stars should have random positions on the canvas
     //  - The stars should have random color (some shade of grey)
 
-    graphics.setColor(Color.BLACK);
-    graphics.fillRect(0, 0, WIDTH, HEIGHT);
+    int starSize = 2;
+    int numberOfStars = 200;
 
+    for (int i = 0; i < numberOfStars; i++) {
+      drawRandomPosStar(starSize, graphics);
+    }
+  }
+
+  public static void drawRandomPosStar(int size, Graphics graphics) {
+    int randomX = (int) (Math.random() * WIDTH);
+    int randomY = (int) (Math.random() * HEIGHT);
+
+    drawStar(randomX, randomY, size, graphics);
   }
 
   public static void drawStar(int x, int y, int size, Graphics graphics) {
     graphics.setColor(randomGray());
-    graphics.fillRect();
+    graphics.fillRect(x, y, size, size);
   }
 
   public static Color randomGray() {
-    int randomInt = 56 + ((int) Math.random() * 256);
+    int randomInt = 56 + ((int) (Math.random() * 200));
     Color randomGray = new Color(randomInt, randomInt, randomInt);
     return randomGray;
   }
@@ -38,6 +46,7 @@ public class StarryNight {
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     ImagePanel panel = new ImagePanel();
     panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+    panel.setBackground(Color.BLACK);
     jFrame.add(panel);
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
