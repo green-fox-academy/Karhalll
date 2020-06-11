@@ -6,15 +6,15 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
 
   public static void mainDraw(Graphics graphics) {
-    int sideSize = HEIGHT/7;
-    int v = (int) (sideSize * Math.sqrt(3) / 2);
+    int twiceV = HEIGHT/7;
+    int v = twiceV/2;
     for (int i = 0; i < 7; i++) {
-      drawHexagon(WIDTH/2, v + i * HEIGHT/7, sideSize, graphics);
+      drawHexagon(WIDTH/2, v + i * HEIGHT/7, v, graphics);
     }
   }
 
-  public static void drawHexagon(int posX, int posY, int side, Graphics graphics) {
-    int v = (int) (side * Math.sqrt(3) / 2);
+  public static void drawHexagon(int posX, int posY, int v, Graphics graphics) {
+    int side = (int) (v * 2 / Math.sqrt(3));
 
     int[] x = {side/2, side, side/2, -side/2, -side, -side/2};
     int[] y = {-v, 0, v, v, 0, -v};
