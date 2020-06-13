@@ -10,24 +10,24 @@ public class SuperHexagon {
     int dimension = 7;
 
     int twiceV = HEIGHT / (dimension + 1);
-    int v = twiceV/2;
+    int v = twiceV / 2;
 
     int side = (int) (v * 2d / Math.sqrt(3d));
 
-    int hexagonsInColumn = dimension/2;
+    int hexagonsInColumn = dimension / 2;
     for (int i = 0; i < dimension; i++) {
-      int posX = side*2 + i * side*3/2;
+      int posX = side*2 + i*side*3/2;
       int posY = 0;
       if (i <= dimension/2) {
         hexagonsInColumn++;
         for (int j = 0; j < hexagonsInColumn; j++) {
-          posY = v + j * 2 * v + v*(dimension/2 + 1 - i);
+          posY = v + j*2*v + v*(dimension/2 + 1 - i);
           drawHexagon(posX, posY, side, v, graphics);
         }
       } else {
         hexagonsInColumn--;
         for (int j = 0; j < hexagonsInColumn; j++) {
-          posY = v + j * 2 * v + v*(i - dimension/2 + 1);
+          posY = v + j*2*v + v*(i - dimension/2 + 1);
           drawHexagon(posX, posY, side, v, graphics);
         }
       }

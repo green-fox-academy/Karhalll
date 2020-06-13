@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Scanner;
 import javax.swing.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -15,10 +13,11 @@ public class LinePlayQuarters {
     for (int i = 0; i < sideSegments; i++) {
       for (int j = 0; j < sideSegments; j++) {
         drawSegment(
-            i * WIDTH/sideSegments,
-            j * HEIGHT/sideSegments,
+            i * WIDTH / sideSegments,
+            j * HEIGHT / sideSegments,
             sideSegments,
-            graphics);
+            graphics
+        );
       }
     }
   }
@@ -26,8 +25,8 @@ public class LinePlayQuarters {
   public static void drawSegment(int xPlus, int yPlus, int sideSegments, Graphics graphics) {
     int lines = 15;
 
-    int quarterX = WIDTH/sideSegments;
-    int quarterY = HEIGHT/sideSegments;
+    int quarterX = WIDTH / sideSegments;
+    int quarterY = HEIGHT / sideSegments;
 
     for (int i = 1; i < lines; i++) {
 

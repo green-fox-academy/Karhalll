@@ -9,12 +9,12 @@ public class Triangles {
 
     int pyramidHeight = 21;
 
-    int triangleSize = WIDTH/pyramidHeight;
+    int triangleSize = WIDTH / pyramidHeight;
     int trianglesInLine = 1;
     for (int i = 1; i <= pyramidHeight; i++) {
 
       lineOfTriangles(
-          (pyramidHeight - i)*triangleSize/2,
+          (pyramidHeight - i) * triangleSize / 2,
           i * (int) (triangleSize * Math.sqrt(3) / 2),
           trianglesInLine,
           triangleSize,
@@ -30,7 +30,7 @@ public class Triangles {
       if (i % 2 == 0) {
         drawEquilateralTriangle(xPosition + i*size/2, yPosition, size, graphics);
       } else {
-        drawFlippedEquilateralTriangle(xPosition  + i*size/2, yPosition, size , graphics);
+        drawFlippedEquilateralTriangle(xPosition  + i*size/2, yPosition, size, graphics);
       }
     }
   }
@@ -44,7 +44,9 @@ public class Triangles {
     drawTriangleRepos(posX, posY, x, y, graphics);
   }
 
-  public static void drawFlippedEquilateralTriangle(int posX, int posY, int sideSize, Graphics graphics) {
+  public static void drawFlippedEquilateralTriangle(
+      int posX, int posY, int sideSize, Graphics graphics) {
+
     double v = sideSize * Math.sqrt(3) / 2;
 
     int[] x = {0, sideSize/2, sideSize};
