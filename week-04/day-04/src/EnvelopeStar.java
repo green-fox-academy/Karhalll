@@ -19,36 +19,18 @@ public class EnvelopeStar {
 
       int xPos = i * quarterX / lines;
       int yPos = i * quarterY / lines;
-      graphics.setColor(Color.GREEN);
-      graphics.drawLine(quarterX, yPos, quarterX - xPos, quarterY);
-    }
-
-    for (int i = 1; i < lines; i++) {
-
-      int xPos = i * quarterX / lines;
-      int yPos = i * quarterY / lines;
-      graphics.setColor(Color.GREEN);
-      graphics.drawLine(quarterX, yPos, quarterX + xPos, quarterY);
-    }
-
-    for (int i = 1; i < lines; i++) {
-
-      int xPos = i * quarterX / lines;
-      int yPos = i * quarterY / lines;
-      graphics.setColor(Color.GREEN);
-      graphics.drawLine(quarterX, quarterY + yPos, xPos, quarterY);
-    }
-
-    for (int i = 1; i < lines; i++) {
-
-      int xPos = i * quarterX / lines;
-      int yPos = i * quarterY / lines;
-      graphics.setColor(Color.GREEN);
-      graphics.drawLine(quarterX, quarterY + yPos, 2*quarterX - xPos, quarterY);
+      drawGreenLine(quarterX, yPos, quarterX - xPos, quarterY, graphics);
+      drawGreenLine(quarterX, yPos, quarterX + xPos, quarterY, graphics);
+      drawGreenLine(quarterX, quarterY + yPos, xPos, quarterY, graphics);
+      drawGreenLine(quarterX, quarterY + yPos, 2*quarterX - xPos, quarterY, graphics);
     }
 
     graphics.drawLine(quarterX, 0, quarterX , 2*quarterY);
+  }
 
+  public static void drawGreenLine(int x1, int y1, int x2, int y2, Graphics graphics) {
+      graphics.setColor(Color.GREEN);
+      graphics.drawLine(x1, y1, x2, y2);
   }
 
   // Don't touch the code below
