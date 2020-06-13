@@ -1,15 +1,24 @@
 import java.awt.*;
-import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class LinePlayQuarters {
+public class LinePlayQuartersDynamic {
+
+  static int segments = 4;
+
+  public static void drawingLoop(JFrame jFrame) {
+    while (true) {
+      System.out.println("Number of segments :");
+      Scanner scanner = new Scanner(System.in);
+      segments = scanner.nextInt();
+      jFrame.repaint();
+    }
+  }
 
   public static void mainDraw(Graphics graphics) {
 
-    int segments = 64; //Also works for 4/16/64. All any power of 2 ;)
     int sideSegments = (int) Math.sqrt(segments);
 
     for (int i = 0; i < sideSegments; i++) {
@@ -54,6 +63,8 @@ public class LinePlayQuarters {
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
     jFrame.pack();
+
+    drawingLoop(jFrame);
   }
 
   static class ImagePanel extends JPanel {
@@ -64,3 +75,4 @@ public class LinePlayQuarters {
     }
   }
 }
+
