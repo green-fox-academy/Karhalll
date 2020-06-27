@@ -8,26 +8,26 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SierpinskyCarpet {
   public static void mainDraw(Graphics graphics) {
     graphics.setColor(Color.BLACK);
-    drawSquareGrid(graphics, HEIGHT/3, WIDTH/3, HEIGHT/3, 5);
+    sierpinskyGrid(graphics, HEIGHT/3, WIDTH/3, HEIGHT/3, 5);
   }
 
-  private static void drawSquareGrid(
+  private static void sierpinskyGrid(
       Graphics graphics, int side, int posX, int posY, int level) {
     if (level <= 0) {
       return;
     }
     graphics.fillRect(posX, posY, side, side);
 
-    drawSquareGrid(graphics, side/3, posX - 2*side/3, posY - 2*side/3, level - 1);
-    drawSquareGrid(graphics, side/3, posX + side/3, posY - 2*side/3, level - 1);
-    drawSquareGrid(graphics, side/3, posX + 4*side/3, posY - 2*side/3, level - 1);
+    sierpinskyGrid(graphics, side/3, posX - 2*side/3, posY - 2*side/3, level - 1);
+    sierpinskyGrid(graphics, side/3, posX + side/3, posY - 2*side/3, level - 1);
+    sierpinskyGrid(graphics, side/3, posX + 4*side/3, posY - 2*side/3, level - 1);
 
-    drawSquareGrid(graphics, side/3, posX - 2*side/3, posY + side/3, level - 1);
-    drawSquareGrid(graphics, side/3, posX + 4*side/3, posY + side/3, level - 1);
+    sierpinskyGrid(graphics, side/3, posX - 2*side/3, posY + side/3, level - 1);
+    sierpinskyGrid(graphics, side/3, posX + 4*side/3, posY + side/3, level - 1);
 
-    drawSquareGrid(graphics, side/3, posX - 2*side/3, posY + 4*side/3, level - 1);
-    drawSquareGrid(graphics, side/3, posX + side/3, posY + 4*side/3, level - 1);
-    drawSquareGrid(graphics, side/3, posX + 4*side/3, posY + 4*side/3, level - 1);
+    sierpinskyGrid(graphics, side/3, posX - 2*side/3, posY + 4*side/3, level - 1);
+    sierpinskyGrid(graphics, side/3, posX + side/3, posY + 4*side/3, level - 1);
+    sierpinskyGrid(graphics, side/3, posX + 4*side/3, posY + 4*side/3, level - 1);
 
   }
 
