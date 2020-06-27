@@ -31,7 +31,7 @@ public class SquareGrid {
   static int HEIGHT = 640;
 
   public static void main(String[] args) {
-    JFrame jFrame = new JFrame("Circles");
+    JFrame jFrame = new JFrame("SquareGrid");
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     ImagePanel panel = new ImagePanel();
     panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
