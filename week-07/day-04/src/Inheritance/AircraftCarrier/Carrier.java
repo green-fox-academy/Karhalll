@@ -14,6 +14,11 @@ public class Carrier {
     this.ammoStored = ammoStored;
   }
 
+  Carrier(Carrier that) {
+    this(that.healthPoints, that.ammoStored);
+    this.aircrafts = that.aircrafts;
+  }
+
   void add(Aircraft aircraft) {
     if (aircraft.isPriority()) {
       aircrafts.add(0, aircraft);
