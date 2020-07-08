@@ -36,6 +36,6 @@ class SumTest {
   void sumNullList() {
     ArrayList<Integer> nullList = null;
 
-    assertEquals(0, sum.sum(numbers));
+    assertEquals(0, sum.sum(nullList));
   }
 }
