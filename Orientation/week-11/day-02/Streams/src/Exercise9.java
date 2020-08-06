@@ -11,6 +11,6 @@ public class Exercise9 {
             k -> (char) k.intValue(),
             v -> 1,
             Integer::sum));
-    System.out.println("Frequencies:\n" + frequencies);
+    System.out.println(frequencies);
   }
 }
