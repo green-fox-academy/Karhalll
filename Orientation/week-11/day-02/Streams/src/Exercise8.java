@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 public class Exercise8 {
   public static void main(String[] args) {
+    //Write a Stream Expression to concatenate a Character list to a string!
     List<Character> chars = Arrays.asList('a', 'h', 'o', 'j');
 
     String string = chars.stream()
