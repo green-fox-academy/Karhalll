@@ -1,0 +1,101 @@
+body {
+  background-color: rgb(190, 190, 190);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+  margin: 5% auto;
+  border-radius: 3px;
+  height: 400px;
+  width: 600px;
+  background-color: white;
+  box-shadow: 0px 2px 2px rgb(133, 133, 133);;
+}
+
+td#form {
+  padding: 30px;
+  width: 40%;
+}
+
+td#or {
+  width: 10%;
+}
+
+td#log-with {
+  width: 40%;
+  padding-top: 50px;
+  padding-right: 40px;
+}
+
+fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: flex;
+}
+
+label {
+  font-size: x-large;
+}
+
+input {
+  margin: 30px 3px;
+  padding: 0;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: rgb(201, 201, 201)
+}
+
+input:focus {
+  border-color: rgb(22, 160, 133)
+}
+
+input#send {
+  margin: 80px 0 0 0;
+  border: 0;
+  padding: 0;
+  height: 30px;
+  width: 120px;
+  background-color: rgb(22, 160, 133);
+  border-radius: 3px;
+  color: white;
+}
+
+div.or-button {
+  box-shadow: 0px 2px 2px rgb(133, 133, 133);;
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  background-color: rgb(192, 192, 192);
+  text-align: center;
+  vertical-align: middle;
+}
+
+div.text {
+  line-height: 40px;
+}
+
+div .log-with {
+  margin: 20px auto;
+  display: block;
+  height: 40px;
+  width: 100%;
+  color: white;
+  border-radius: 3px;
+  border: 0;
+}
+
+.log-with.facebook {
+  background-color: rgb(66, 103, 178);
+}
+
+.log-with.twitter {
+  background-color: rgb(29, 161, 242);
+}
+
+.log-with.google {
+  background-color: rgb(222, 82, 70);
+}
