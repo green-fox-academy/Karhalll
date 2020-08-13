@@ -5,6 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p>Hello, <span th:text="${name}"></span>! (It is a web page.)</p>
+<span th:text="${greeting}" th:style="${style}"></span>, <span th:text="${name}"></span>! This site was loaded <span th:text="${greetCount}"></span> times since last server start.</p>
 </body>
 </html>
