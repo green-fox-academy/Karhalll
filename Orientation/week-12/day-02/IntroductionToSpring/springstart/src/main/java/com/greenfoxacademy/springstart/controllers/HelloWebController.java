@@ -12,15 +12,18 @@ public class HelloWebController {
   @RequestMapping("/web/greeting")
   public String greeting(Model model, @RequestParam String name, @RequestParam String size,
                          @RequestParam String r, @RequestParam String g, @RequestParam String b) {
+
     Greeting greeting = new Greeting();
 
-    String style = "font-size:" + size + "px;" +
+    String style =
+        "font-size:" + size + "px;" +
         "color:rgb(" + r + "," + g + "," + b + ");";
 
     model.addAttribute("greeting", greeting.getGreeting());
     model.addAttribute("style", style);
     model.addAttribute("name", name);
     model.addAttribute("greetCount", greeting.getGreetCount());
+
     return "greeting";
   }
 }
