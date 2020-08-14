@@ -14,4 +14,10 @@ public class BankController {
     model.addAttribute("account", account);
     return "account";
   }
+
+  @GetMapping("/HTMLception")
+  public String htmlCeption(Model model) {
+    model.addAttribute("text", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
+    return "htmlCeption";
+  }
 }
