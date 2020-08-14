@@ -8,11 +8,13 @@
 <body>
     <table>
         <tr>
+            <th>Index</th>
             <th>Name</th>
             <th>Balance</th>
             <th>Animal Type</th>
         </tr>
         <tr th:each="account : ${accounts}">
+            <td th:text="${accountStat.index}"></td>
             <td th:text="${account.name}"></td>
             <td th:text="|${#numbers.formatDecimal(account.balance, 1, 'NONE', 2, 'POINT')} Zebra|"></td>
             <td th:text="${account.animalType}"></td>
