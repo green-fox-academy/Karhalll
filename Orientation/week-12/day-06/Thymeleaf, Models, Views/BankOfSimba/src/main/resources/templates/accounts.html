@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Bank Account</title>
+    <title>Title</title>
 </head>
 <body>
     <table>
@@ -12,10 +12,10 @@
             <th>Balance</th>
             <th>Animal Type</th>
         </tr>
-        <tr th:object="${account}">
-            <td th:text="*{name}"></td>
-            <td th:text="|*{#numbers.formatDecimal(balance, 0, 'NONE', 2, 'POINT')} Zebra|"></td>
-            <td th:text="*{animalType}"></td>
+        <tr th:each="account : ${accounts}">
+            <td th:text="${account.name}"></td>
+            <td th:text="|${#numbers.formatDecimal(account.balance, 1, 'NONE', 2, 'POINT')} Zebra|"></td>
+            <td th:text="${account.animalType}"></td>
         </tr>
     </table>
 </body>
