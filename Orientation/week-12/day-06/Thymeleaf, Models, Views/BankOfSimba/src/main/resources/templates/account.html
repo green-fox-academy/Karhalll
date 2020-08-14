@@ -14,7 +14,7 @@
         </tr>
         <tr th:object="${account}">
             <td th:text="*{name}"></td>
-            <td th:text="*{balance}"></td>
+            <td th:text="|*{#numbers.formatDecimal(balance, 0, 'NONE', 2, 'POINT')} Zebra|"></td>
             <td th:text="*{animalType}"></td>
         </tr>
     </table>
