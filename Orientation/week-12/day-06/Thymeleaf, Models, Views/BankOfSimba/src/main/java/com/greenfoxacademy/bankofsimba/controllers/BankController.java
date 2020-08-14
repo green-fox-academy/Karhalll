@@ -13,11 +13,14 @@ public class BankController {
   List<BankAccount> accounts = new ArrayList<>();
 
   private BankController() {
+    accounts.add(new BankAccount("Scar", 7000f, "lion"));
     accounts.add(new BankAccount("Simba", 2000f, "lion"));
     accounts.add(new BankAccount("Nala", 3000f, "lion"));
     accounts.add(new BankAccount("Mufasa", 15000f, "lion"));
     accounts.add(new BankAccount("Timon", 10f, "meerkat"));
     accounts.add(new BankAccount("Pumbaa", 0f, "warthog"));
+    accounts.add(new BankAccount("Shenzi", 100f, "hyena"));
+    accounts.add(new BankAccount("Ed", 75f, "hyena"));
   }
 
   @GetMapping("/show")
