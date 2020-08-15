@@ -3,11 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>My Webshop</title>
     <link th:href="@{/styles.css}" rel="stylesheet" />
 </head>
 <body>
-    <header>
+    <header th:fragment="header">
         <h1>Martin's shop</h1>
         <nav>
             <button>Only available</button>
@@ -17,6 +16,5 @@
             <button>Most Expensive available</button>
         </nav>
     </header>
-
 </body>
 </html>

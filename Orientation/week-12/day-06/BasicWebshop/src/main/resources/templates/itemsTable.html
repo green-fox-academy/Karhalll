@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+<body>
+    <table th:fragment="items-table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity of stock</th>
+        </tr>
+        <tr th:each="item : ${items}" th:object="${item}">
+            <td th:text="*{name}"></td>
+            <td th:text="*{description}"></td>
+            <td th:text="*{price}"></td>
+            <td th:text="*{quantity}"></td>
+        </tr>
+    </table>
+</body>
+</html>

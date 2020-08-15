@@ -23,6 +23,7 @@ public class WebshopController {
 
   @GetMapping("/webshop")
   public String mainPage(Model model) {
-    return "default";
+    model.addAttribute("items", items);
+    return "index";
   }
 }

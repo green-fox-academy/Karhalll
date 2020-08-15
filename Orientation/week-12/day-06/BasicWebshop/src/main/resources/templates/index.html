@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Webshop</title>
+    <link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+<body>
+    <header th:replace="header :: header"></header>
+    <table th:replace="itemsTable :: items-table"></table>
+</body>
+</html>
