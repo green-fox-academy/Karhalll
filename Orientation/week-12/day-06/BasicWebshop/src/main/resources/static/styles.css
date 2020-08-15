@@ -19,7 +19,7 @@ nav a {
   margin-right: 10px;
 }
 
-nav button {
+button, input.button {
   text-transform: uppercase;
   background-color: rgb(244, 73, 59);
   border-style: hidden;
