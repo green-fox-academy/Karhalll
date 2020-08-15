@@ -24,4 +24,10 @@ public class WebshopController {
     model.addAttribute("items", items.getAvailable());
     return "index";
   }
+
+  @GetMapping("/cheapest-first")
+  public String cheapestFirst(Model model) {
+    model.addAttribute("items", items.getSortedByPrice());
+    return "index";
+  }
 }

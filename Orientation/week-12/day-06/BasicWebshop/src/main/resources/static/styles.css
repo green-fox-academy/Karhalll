@@ -15,6 +15,10 @@ header h1 {
   height: 40px;
 }
 
+nav a {
+  margin-right: 10px;
+}
+
 nav button {
   text-transform: uppercase;
   background-color: rgb(244, 73, 59);
@@ -22,5 +26,4 @@ nav button {
   border-radius: 3px;
   color: white;
   height: 25px;
-  margin-right: 10px;
 }
