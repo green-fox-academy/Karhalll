@@ -8,6 +8,7 @@
 </head>
 <body>
     <header th:replace="header :: header"></header>
+    <form th:replace="searchBar :: search-bar"></form>
     <div th:if="${items != null}">
         <table  th:replace="itemsTable :: items-table"></table>
     </div>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+<body>
+    <form th:fragment="search-bar" th:action="@{/search}" th:method="POST">
+        <p>Search for:</p>
+        <input type="text" name="text" value="...something like Nike">
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

@@ -1,12 +1,12 @@
 package com.greenfoxacademy.basicwebshop.controllers;
 
-import com.greenfoxacademy.basicwebshop.structures.ShopItem;
+import com.greenfoxacademy.basicwebshop.structures.Search;
 import com.greenfoxacademy.basicwebshop.structures.Stock;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class WebshopController {
@@ -46,6 +46,12 @@ public class WebshopController {
   @GetMapping("/most-expensive")
   public String mostExpensive(Model model) {
     model.addAttribute("items", items.getMostExpensive());
+    return "index";
+  }
+
+  @PostMapping("/search")
+  public String search(@ModelAttribute Search text, Model model) {
+    model.addAttribute("items", items.getByContains(text.getText()));
     return "index";
   }
 }
