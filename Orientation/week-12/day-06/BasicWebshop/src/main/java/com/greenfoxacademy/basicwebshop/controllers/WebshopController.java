@@ -30,4 +30,22 @@ public class WebshopController {
     model.addAttribute("items", items.getSortedByPrice());
     return "index";
   }
+
+  @GetMapping("/contains-nike")
+  public String containsNike(Model model) {
+    model.addAttribute("items", items.getByContains("nike"));
+    return "index";
+  }
+
+  @GetMapping("/average-stock")
+  public String averageStock(Model model) {
+    model.addAttribute("averageStock", items.averageStock());
+    return "index";
+  }
+
+  @GetMapping("/most-expensive")
+  public String mostExpensive(Model model) {
+    model.addAttribute("items", items.getMostExpensive());
+    return "index";
+  }
 }

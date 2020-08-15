@@ -8,6 +8,10 @@
 </head>
 <body>
     <header th:replace="header :: header"></header>
-    <table th:replace="itemsTable :: items-table"></table>
+    <div th:if="${items != null}">
+        <table  th:replace="itemsTable :: items-table"></table>
+    </div>
+    <h2 th:if="${averageStock != null}"
+        th:text="|Average stock: ${#numbers.formatDecimal(averageStock, 0, 'NONE', 1, 'POINT')}|"></h2>
 </body>
 </html>

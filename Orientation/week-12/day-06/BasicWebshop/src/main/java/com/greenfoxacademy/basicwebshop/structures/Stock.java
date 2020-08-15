@@ -37,4 +37,22 @@ public class Stock {
         .sorted(Comparator.comparing(ShopItem::getPrice))
         .collect(Collectors.toList());
   }
+
+  public List<ShopItem> getByContains(String string) {
+    return items.stream()
+        .filter(i -> i.getName().toLowerCase().contains(string.toLowerCase())
+            || i.getDescription().toLowerCase().contains(string.toLowerCase()))
+        .collect(Collectors.toList());
+  }
+
+  public Double averageStock() {
+    return items.stream()
+        .collect(Collectors.averagingDouble(ShopItem::getQuantity));
+  }
+
+  public List<ShopItem> getMostExpensive() {
+    return items.stream()
+        .max(Comparator.comparing(ShopItem::getPrice))
+        .stream().collect(Collectors.toList());
+  }
 }
