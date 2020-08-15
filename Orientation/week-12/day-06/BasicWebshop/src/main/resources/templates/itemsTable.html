@@ -16,7 +16,7 @@
         <tr th:each="item : ${items}" th:object="${item}">
             <td th:text="*{name}"></td>
             <td th:text="*{description}"></td>
-            <td th:text="*{price}"></td>
+            <td th:text="|*{#numbers.formatDecimal(price, 1, 'NONE', 1, 'POINT')} Kč|"></td>
             <td th:text="*{quantity}"></td>
         </tr>
     </table>
