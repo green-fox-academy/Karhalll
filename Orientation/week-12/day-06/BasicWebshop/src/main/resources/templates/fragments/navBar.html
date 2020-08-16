@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nav Bar</title>
+</head>
+<body>
+    <nav th:fragment="nav-bar">
+        <a th:href="@{/only-available}"><button>Only available</button></a>
+        <a th:href="@{/cheapest-first}"><button>Cheapest first</button></a>
+        <a th:href="@{/contains-nike}"><button>Contains nike</button></a>
+        <a th:href="@{/average-stock}"><button>Average stock</button></a>
+        <a th:href="@{/most-expensive}"><button>Most Expensive available</button></a>
+    </nav>
+</body>
+</html>

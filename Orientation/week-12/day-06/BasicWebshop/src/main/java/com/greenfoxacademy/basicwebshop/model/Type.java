@@ -1,9 +1,9 @@
 package com.greenfoxacademy.basicwebshop.model;
 
 public enum Type {
+  BS("Beverages and Snacks"),
   CS("Clothes and Shoes"),
-  E("Electronics"),
-  BS("Beverages and Snacks");
+  E("Electronics");
 
   public final String label;
 
