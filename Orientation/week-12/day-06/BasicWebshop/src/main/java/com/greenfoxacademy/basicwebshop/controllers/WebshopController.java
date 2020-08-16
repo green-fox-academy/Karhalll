@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class WebshopController {
 
   private Stock items = new Stock();
+  private String currentCurrency = "Kč";
 
   @GetMapping({"/", "/webshop"})
   public String mainPage(Model model) {
@@ -67,5 +68,24 @@ public class WebshopController {
   public String filterByType(@PathVariable Type type, Model model) {
     model.addAttribute("items", items.getByType(type));
     return "moreFilters";
+  }
+
+  @GetMapping("/price-in-euro")
+  public String priceInEur(Model model) {
+    model.addAttribute("currency", currentCurrency = "€");
+    model.addAttribute("items", items.getItems());
+    return "moreFilters";
+  }
+
+  @GetMapping("/price-in-original")
+  public String priceInOriginal(Model model) {
+    model.addAttribute("currency", currentCurrency = "Kč");
+    model.addAttribute("items", items.getItems());
+    return "moreFilters";
+  }
+
+  @ModelAttribute
+  public void priceInCurrency(Model model) {
+    model.addAttribute("currency", currentCurrency);
   }
 }

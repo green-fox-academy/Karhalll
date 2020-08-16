@@ -9,7 +9,8 @@
 <body>
     <header th:replace="fragments/header :: header"></header>
     <nav th:replace="fragments/navBarMore :: nav-bar"></nav>
-    <form th:replace="fragments/searchBar :: search-bar"></form>
+    <p></p>
+<!--    <form th:replace="fragments/searchBar :: search-bar"></form>-->
     <div th:if="${items != null}">
         <table  th:replace="fragments/itemsTable :: items-table"></table>
     </div>
