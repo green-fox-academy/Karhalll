@@ -9,12 +9,14 @@
     <table th:fragment="items-table">
         <tr>
             <th>Name</th>
+            <th>Type</th>
             <th>Description</th>
             <th>Price</th>
             <th>Quantity of stock</th>
         </tr>
         <tr th:each="item : ${items}" th:object="${item}">
             <td class="name" th:text="*{name}"></td>
+            <td class="type" th:text="*{type.label}"></td>
             <td th:text="*{description}"></td>
             <td class="price" th:text="|*{#numbers.formatDecimal(price, 1, 'NONE', 1, 'POINT')} Kč|"></td>
             <td class="quantity"th:text="*{quantity}"></td>

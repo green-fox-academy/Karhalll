@@ -1,7 +1,7 @@
 package com.greenfoxacademy.basicwebshop.controllers;
 
-import com.greenfoxacademy.basicwebshop.structures.Search;
-import com.greenfoxacademy.basicwebshop.structures.Stock;
+import com.greenfoxacademy.basicwebshop.model.Search;
+import com.greenfoxacademy.basicwebshop.data.Stock;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

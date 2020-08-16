@@ -1,4 +1,4 @@
-package com.greenfoxacademy.basicwebshop.structures;
+package com.greenfoxacademy.basicwebshop.model;
 
 public class Search {
   String text;

@@ -1,4 +1,4 @@
-package com.greenfoxacademy.basicwebshop.structures;
+package com.greenfoxacademy.basicwebshop.model;
 
 public class ShopItem {
   private String name;
@@ -7,8 +7,9 @@ public class ShopItem {
   private Integer quantity;
   private Type type;
 
-  public ShopItem(String name, String description, Float price, Integer quantity) {
+  public ShopItem(String name, Type type, String description, Float price, Integer quantity) {
     this.name = name;
+    this.type = type;
     this.description = description;
     this.price = price;
     this.quantity = quantity;
@@ -20,6 +21,14 @@ public class ShopItem {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public Type getType() {
+    return type;
+  }
+
+  public void setType(Type type) {
+    this.type = type;
   }
 
   public String getDescription() {
