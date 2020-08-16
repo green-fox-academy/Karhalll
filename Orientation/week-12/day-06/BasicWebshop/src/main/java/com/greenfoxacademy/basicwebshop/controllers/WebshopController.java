@@ -16,6 +16,11 @@ public class WebshopController {
   private Stock items = new Stock();
   private String currentCurrency = "Kč";
 
+  @ModelAttribute
+  public void priceInCurrency(Model model) {
+    model.addAttribute("currency", currentCurrency);
+  }
+
   @GetMapping({"/", "/webshop"})
   public String mainPage(Model model) {
     model.addAttribute("items", items.getItems());
@@ -82,10 +87,5 @@ public class WebshopController {
     model.addAttribute("currency", currentCurrency = "Kč");
     model.addAttribute("items", items.getItems());
     return "moreFilters";
-  }
-
-  @ModelAttribute
-  public void priceInCurrency(Model model) {
-    model.addAttribute("currency", currentCurrency);
   }
 }
