@@ -1,4 +1,4 @@
-package com.greenfoxacademy.basicwebshop.model;
+package com.greenfoxacademy.basicwebshop.models;
 
 public enum Type {
   BS("Beverages and Snacks"),
