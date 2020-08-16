@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nav Bar More</title>
+</head>
+<body>
+    <nav th:fragment="nav-bar">
+        <a th:each="type : ${T(com.greenfoxacademy.basicwebshop.models.Type).values()}"
+           th:href="|@{/filter-by-type/}${type}|">
+            <button th:text="${type.label}"></button>
+        </a>
+
+        <a th:href="@{/price-in-euro}"><button>Euro</button></a>
+        <a th:href="@{/price-in-original}"><button>Original Currency</button></a>
+    </nav>
+</body>
+</html>

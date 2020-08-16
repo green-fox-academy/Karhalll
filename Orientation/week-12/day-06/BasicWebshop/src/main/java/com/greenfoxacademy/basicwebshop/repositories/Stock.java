@@ -57,4 +57,10 @@ public class Stock {
         .max(Comparator.comparing(ShopItem::getPrice))
         .stream().collect(Collectors.toList());
   }
+
+  public List<ShopItem> getByType(Type type) {
+    return items.stream()
+        .filter(i -> i.getType() == type)
+        .collect(Collectors.toList());
+  }
 }
