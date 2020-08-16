@@ -14,10 +14,10 @@
             <th>Quantity of stock</th>
         </tr>
         <tr th:each="item : ${items}" th:object="${item}">
-            <td th:text="*{name}"></td>
+            <td class="name" th:text="*{name}"></td>
             <td th:text="*{description}"></td>
-            <td th:text="|*{#numbers.formatDecimal(price, 1, 'NONE', 1, 'POINT')} Kč|"></td>
-            <td th:text="*{quantity}"></td>
+            <td class="price" th:text="|*{#numbers.formatDecimal(price, 1, 'NONE', 1, 'POINT')} Kč|"></td>
+            <td class="quantity"th:text="*{quantity}"></td>
         </tr>
     </table>
 </body>
