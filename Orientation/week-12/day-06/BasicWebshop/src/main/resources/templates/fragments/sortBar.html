@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+<body>
+    <form th:fragment="sort-bar" class="sort-bar" th:action="@{/filter-by-price}" th:method="POST">
+        <input class="button sort" type="submit" name="method" value="Above">
+        <input class="button sort" type="submit" name="method" value="Below">
+        <input class="button sort" type="submit" name="method" value="Exactly">
+        <div>
+            <p>Filter by price:</p>
+            <input class="searchBar sortBar" type="number" name="number" placeholder="...e.g.: 300">
+        </div>
+    </form>
+</body>
+</html>

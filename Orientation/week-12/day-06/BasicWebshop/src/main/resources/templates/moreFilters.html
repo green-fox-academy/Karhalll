@@ -10,7 +10,7 @@
     <header th:replace="fragments/header :: header"></header>
     <nav th:replace="fragments/navBarMore :: nav-bar"></nav>
     <p></p>
-<!--    <form th:replace="fragments/searchBar :: search-bar"></form>-->
+    <form th:replace="fragments/sortBar :: sort-bar"></form>
     <div th:if="${items != null}">
         <table  th:replace="fragments/itemsTable :: items-table"></table>
     </div>

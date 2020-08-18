@@ -98,3 +98,28 @@ input.searchBar {
   border-color: rgb(244, 73, 59);
   border-width: 2px;
 }
+
+form input.button.sort {
+  height: 45px;
+  width: 110px;
+  font-size: 24px;
+}
+
+form.sort-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+form.sort-bar div p {
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+
+input.searchBar.sortBar {
+  color: rgb(244, 73, 59);
+  font-size: 24px;
+  height: 40px;
+  width: 400px;
+}

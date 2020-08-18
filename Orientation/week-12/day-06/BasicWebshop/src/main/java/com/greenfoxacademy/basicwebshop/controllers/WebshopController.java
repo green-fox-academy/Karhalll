@@ -88,4 +88,32 @@ public class WebshopController {
     model.addAttribute("items", items.getItems());
     return "moreFilters";
   }
+
+  @PostMapping("/filter-by-price")
+  public String filterByPrice(
+      @ModelAttribute(name = "number") String number,
+      @ModelAttribute(name = "method") String method,
+      Model model) {
+
+    if (!number.isEmpty()) {
+      Double price = Double.parseDouble(number);
+      System.out.println(price);
+
+      switch (method) {
+        case "Above":
+          model.addAttribute("items", items.getAbove(price));
+          break;
+        case "Below":
+          model.addAttribute("items", items.getBelow(price));
+          break;
+        case "Exactly":
+          model.addAttribute("items", items.getExactly(price));
+          break;
+      }
+    } else {
+      model.addAttribute("items", items.getItems());
+    }
+
+    return "moreFilters";
+  }
 }

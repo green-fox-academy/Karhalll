@@ -63,4 +63,22 @@ public class Stock {
         .filter(i -> i.getType() == type)
         .collect(Collectors.toList());
   }
+
+  public List<ShopItem> getAbove(Double price) {
+    return items.stream()
+        .filter(i -> i.getPrice() > price)
+        .collect(Collectors.toList());
+  }
+
+  public List<ShopItem> getBelow(Double price) {
+    return items.stream()
+        .filter(i -> i.getPrice() < price)
+        .collect(Collectors.toList());
+  }
+
+  public List<ShopItem> getExactly(Double price) {
+    return items.stream()
+        .filter(i -> i.getPrice().doubleValue() == price)
+        .collect(Collectors.toList());
+  }
 }
