@@ -47,8 +47,8 @@ public class IndexController extends WebshopController {
   }
 
   @PostMapping("/search")
-  public String search(@ModelAttribute Search text, Model model) {
-    model.addAttribute("items", items.getByContains(text.getText()));
+  public String search(@ModelAttribute("text") String text, Model model) {
+    model.addAttribute("items", items.getByContains(text));
     return "index";
   }
 }

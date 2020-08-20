@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public abstract class WebshopController {
 
   protected Stock items = new Stock();
-  protected String currentCurrency = "Kč";
+  protected static String currentCurrency = "Kč";
 
   @ModelAttribute
   public void priceInCurrency(Model model) {

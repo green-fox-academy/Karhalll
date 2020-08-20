@@ -19,8 +19,10 @@
             <td class="type" th:text="*{type.label}"></td>
             <td th:text="*{description}"></td>
             <div th:switch="${currency}">
-                <td th:case="Kč" class="price" th:text="|*{#numbers.formatDecimal(price, 1, 'NONE', 1, 'POINT')} ${currency}|"></td>
-                <td th:case="€" class="price" th:text="|*{#numbers.formatDecimal(price/26, 1, 'NONE', 2, 'POINT')} ${currency}|"></td>
+                <td class="price" th:case="Kč"
+                    th:text="|*{#numbers.formatDecimal(price, 1, 'NONE', 1, 'POINT')} ${currency}|"></td>
+                <td class="price" th:case="€"
+                    th:text="|*{#numbers.formatDecimal(price/26, 1, 'NONE', 2, 'POINT')} ${currency}|"></td>
             </div>
             <td class="quantity"th:text="*{quantity}"></td>
         </tr>
