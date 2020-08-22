@@ -61,5 +61,18 @@ GROUP BY mID
 ORDER BY rating_spread DESC, title;
 
 /* Exercise 9 */
-
+SELECT AVG(before1980.avrerageStars) - AVG(after1980.averageStars) AS difference
+FROM (
+    SELECT AVG(stars) AS avrerageStars
+    FROM movie
+    INNER JOIN rating USING (mID)
+    WHERE year < 1980
+    GROUP BY mID
+    ) AS before1980, (
+    SELECT AVG(stars) AS averageStars
+    FROM movie
+    INNER JOIN rating USING (mID)
+    WHERE year > 1980
+    GROUP BY mID
+    ) AS after1980;
 
