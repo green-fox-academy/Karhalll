@@ -35,6 +35,9 @@ public class UtilityService {
     return colors.get(random.nextInt(colors.size()));
   }
 
+  public boolean validateEmail(String email) {
+    return email.contains("@") && email.contains(".");
+  }
 
   public String caesar(String text, int number) {
     if (number < 0) {
