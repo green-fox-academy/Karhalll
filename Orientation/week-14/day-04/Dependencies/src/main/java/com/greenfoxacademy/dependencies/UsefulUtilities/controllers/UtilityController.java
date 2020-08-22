@@ -29,4 +29,16 @@ public class UtilityController {
     model.addAttribute("valid", utilityService.validateEmail(email));
     return "validator";
   }
+
+  @GetMapping("/useful/encoder")
+  public String encoding(@RequestParam String text, @RequestParam Integer number, Model model) {
+    model.addAttribute("text", utilityService.caesar(text, number));
+    return "caesar";
+  }
+
+  @GetMapping("/useful/decoder")
+  public String decoding(@RequestParam String text, @RequestParam Integer number, Model model) {
+    model.addAttribute("text", utilityService.caesar(text, -number));
+    return "caesar";
+  }
 }
