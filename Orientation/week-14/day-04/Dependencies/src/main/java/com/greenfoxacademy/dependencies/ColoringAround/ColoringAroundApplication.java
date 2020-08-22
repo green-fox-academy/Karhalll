@@ -1,24 +1,26 @@
-package com.greenfoxacademy.dependencies.HelloDIProject;
+package com.greenfoxacademy.dependencies.ColoringAround;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloBeanWorldApplication implements CommandLineRunner {
+public class ColoringAroundApplication implements CommandLineRunner {
 
   @Autowired
-  private Printer printer;
+  @Qualifier("RedColor")
+  private MyColor myColor;
 
   public static void main(String[] args) {
-    SpringApplication.run(HelloBeanWorldApplication.class, args);
+    SpringApplication.run(ColoringAroundApplication.class, args);
 
     System.exit(0);
   }
 
   @Override
   public void run(String... args) throws Exception {
-    printer.log("hello");
+    myColor.printColor();
   }
 }

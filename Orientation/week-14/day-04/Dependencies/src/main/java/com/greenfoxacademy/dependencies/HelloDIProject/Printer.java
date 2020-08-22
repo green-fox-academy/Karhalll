@@ -5,12 +5,12 @@ package com.greenfoxacademy.dependencies.HelloDIProject;
 // Create a Spring project.
 
 import java.time.LocalDateTime;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 // Use the Printer class as a base to let Spring create a dependency from it.
 @Service
-@Component
 public class Printer {
   public void log(String message) {
     System.out.println(LocalDateTime.now() + " MY PRINTER SAYS --- " + message);
