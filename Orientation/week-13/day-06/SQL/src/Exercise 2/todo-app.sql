@@ -1,0 +1,16 @@
+CREATE DATABASE todoapp;
+
+USE todoapp;
+
+CREATE TABLE users (
+    uID INTEGER PRIMARY KEY, name VARCHAR(255)
+);
+
+CREATE TABLE tasks (
+    tID INTEGER PRIMARY KEY, name VARCHAR(255), done BOOLEAN
+);
+
+CREATE TABLE tasks (
+    tID INTEGER PRIMARY KEY, name VARCHAR(255), done BOOLEAN
+);
+
