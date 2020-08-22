@@ -31,10 +31,35 @@ FROM rating
     INNER JOIN movie m ON rating.mID = m.mID
 ORDER BY name, title, stars;
 
-/* Exercise 6 * - not completed */
-SELECT name, title, stars, ratingDate
+/* Exercise 6 */
+SELECT name, title
+FROM movie
+         INNER JOIN rating r1 USING(mId)
+         INNER JOIN rating r2 USING(rId)
+         INNER JOIN reviewer USING(rId)
+WHERE r1.mId = r2.mId AND
+      r1.ratingDate < r2.ratingDate AND
+      r1.stars < r2.stars;
+
+
+
+/* Exercise 7 */
+SELECT title, MAX(stars) AS max
 FROM rating
-    INNER JOIN reviewer r on rating.rID = r.rID
-    INNER JOIN movie m on rating.mID = m.mID
-;
+         INNER JOIN reviewer r USING (rID)
+         INNER JOIN movie m USING (mID)
+GROUP BY title
+HAVING COUNT(title) > 1
+
+ORDER BY title;
+
+/* Exercise 8 */
+SELECT title, (MAX(stars) - MIN(stars)) AS rating_spread
+FROM movie
+    INNER JOIN rating USING (mID)
+GROUP BY mID
+ORDER BY rating_spread DESC, title;
+
+/* Exercise 9 */
+
 
