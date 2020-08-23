@@ -1,11 +1,12 @@
 package com.greenfoxacademy.dependencies.ColoringAround;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @Qualifier("BlueColor")
 public class BlueColor implements MyColor {
+
   @Override
   public void printColor() {
     System.out.println("It is blue in color...");

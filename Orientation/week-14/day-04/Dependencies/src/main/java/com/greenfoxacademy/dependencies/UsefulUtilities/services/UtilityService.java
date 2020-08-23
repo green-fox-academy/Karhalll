@@ -18,8 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilityService {
 
-  private List<String> colors;
-  private Random random;
+  private final List<String> colors;
+  private final Random random;
 
   public UtilityService() {
     colors = new ArrayList<>();

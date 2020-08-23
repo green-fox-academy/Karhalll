@@ -1,7 +1,6 @@
 package com.greenfoxacademy.dependencies.UsefulUtilities.controllers;
 
 import com.greenfoxacademy.dependencies.UsefulUtilities.services.UtilityService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UtilityController {
 
-  @Autowired
-  private UtilityService utilityService;
+  private final UtilityService utilityService;
+
+  public UtilityController(UtilityService utilityService) {
+    this.utilityService = utilityService;
+  }
 
   @GetMapping("/useful")
   public String homepage() {

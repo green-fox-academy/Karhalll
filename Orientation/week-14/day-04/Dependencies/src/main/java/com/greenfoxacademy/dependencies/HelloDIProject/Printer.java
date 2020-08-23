@@ -5,8 +5,6 @@ package com.greenfoxacademy.dependencies.HelloDIProject;
 // Create a Spring project.
 
 import java.time.LocalDateTime;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 // Use the Printer class as a base to let Spring create a dependency from it.
