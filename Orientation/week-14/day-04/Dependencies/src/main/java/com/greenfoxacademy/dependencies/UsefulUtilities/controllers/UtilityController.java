@@ -17,30 +17,30 @@ public class UtilityController {
 
   @GetMapping("/useful")
   public String homepage() {
-    return "useful";
+    return "usefullUtilities/useful";
   }
 
   @GetMapping("/useful/colored")
   public String colored(Model model) {
     model.addAttribute("color", utilityService.randomColor());
-    return "colored";
+    return "usefullUtilities/colored";
   }
 
   @GetMapping("/useful/email")
   public String email(@RequestParam String email, Model model) {
     model.addAttribute("valid", utilityService.validateEmail(email));
-    return "validator";
+    return "usefullUtilities/validator";
   }
 
   @GetMapping("/useful/encoder")
   public String encoding(@RequestParam String text, @RequestParam Integer number, Model model) {
     model.addAttribute("text", utilityService.caesar(text, number));
-    return "caesar";
+    return "usefullUtilities/caesar";
   }
 
   @GetMapping("/useful/decoder")
   public String decoding(@RequestParam String text, @RequestParam Integer number, Model model) {
     model.addAttribute("text", utilityService.caesar(text, -number));
-    return "caesar";
+    return "usefullUtilities/caesar";
   }
 }
