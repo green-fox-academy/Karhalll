@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GreenfoxAppClassConfig {
   @Bean
-  public StudentService studentService()g {
+  public StudentService studentService() {
     return new FileService();
   }
 }
