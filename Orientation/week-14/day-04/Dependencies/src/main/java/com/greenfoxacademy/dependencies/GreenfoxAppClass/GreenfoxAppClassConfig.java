@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Configuration;
 public class GreenfoxAppClassConfig {
   @Bean
   public StudentService studentService() {
-    return new FileService();
+    return new FileService("src/main/resources/static/gfa/students.txt");
   }
 }

@@ -13,7 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class FileService implements StudentService {
 
-  Path path = Paths.get("src/main/resources/static/gfa/students.txt");
+  Path path;
+
+  public FileService(String path) {
+    this.path = Paths.get(path);
+  }
 
   @Override
   public List<String> findAll() {
