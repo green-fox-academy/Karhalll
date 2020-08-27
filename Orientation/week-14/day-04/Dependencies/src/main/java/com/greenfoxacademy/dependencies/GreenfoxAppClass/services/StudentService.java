@@ -12,6 +12,7 @@ package com.greenfoxacademy.dependencies.GreenfoxAppClass.services;// # Greenfox
 
 // Use this `StudentService` as a dependency for your controller.
 
+import com.greenfoxacademy.dependencies.GreenfoxAppClass.controllers.GreenfoxAppClassController;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,10 @@ public class StudentService {
 
   public void save(String student) {
     names.add(student);
+  }
+
+  public int count() {
+    return names.size();
   }
 }
 

@@ -18,7 +18,8 @@ public class GreenfoxAppClassController {
   }
 
   @GetMapping("/gfa")
-  public String mainPage() {
+  public String mainPage(Model model) {
+    model.addAttribute("usersCount", studentService.count());
     return "gfa/gfa";
   }
 
@@ -36,7 +37,7 @@ public class GreenfoxAppClassController {
   @PostMapping("/gfa/save")
   public String addStudent(@RequestParam String studentName) {
     studentService.save(studentName);
-    return "gfa/gfa";
+    return "redirect:/gfa";
   }
 
 
