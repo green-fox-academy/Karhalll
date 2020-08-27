@@ -40,5 +40,15 @@ public class GreenfoxAppClassController {
     return "redirect:/gfa";
   }
 
+  @GetMapping("/gfa/check")
+  public String check() {
+    return "gfa/check-student";
+  }
 
+  @PostMapping("/gfa/check")
+  public String checkStudent(@RequestParam(required = false) String studentName, Model model) {
+    model.addAttribute("studentName", studentName);
+    model.addAttribute("isStudent", studentService.isStudent(studentName));
+    return "gfa/check-student";
+  }
 }
