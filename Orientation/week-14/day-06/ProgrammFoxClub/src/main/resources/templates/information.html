@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
@@ -11,11 +12,16 @@
 
     <img src="/imgs/greenfox.png">
 
-    <p>This is Mr. Fox. Currently living on pizza and lemonade. He Knows 2 tricks.</p>
+    <p th:text="|This is Mr. ${fox.getName()}. Currently living on ${fox.getFood()} and ${fox.getDrink()}. He Knows ${fox.getTricks().size()} tricks.|"></p>
 
     <h1>Known tricks</h1>
 
-    <li>write HTML</li>
-    <li>code in Java</li>
+    <div th:unless="${fox.getTricks().size()} > 0">
+        You know no tricks, yet. Go and learn some.
+    </div>
+    <div th:if="${fox.getTricks().size()} > 0">
+        <li th:each="trick : ${fox.getTricks()}">
+    </div>
+
 </body>
 </html>
