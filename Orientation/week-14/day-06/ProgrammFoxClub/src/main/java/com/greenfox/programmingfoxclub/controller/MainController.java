@@ -37,4 +37,10 @@ public class MainController {
     model.addAttribute("fox", foxService.getFox(name));
     return "nutrition-store";
   }
+
+  @GetMapping("/trickCenter")
+  public String trickCenter(@RequestParam String name, Model model) {
+    model.addAttribute("fox", foxService.getFox(name));
+    return "trick-center";
+  }
 }

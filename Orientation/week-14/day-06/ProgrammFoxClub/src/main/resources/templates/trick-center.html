@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trick Center</title>
+</head>
+<body>
+    <nav th:replace="navigation-bar :: nav-bar"></nav>
+
+    <p></p>
+    <form th:action="'/trickCenter?name=' + ${fox.getName()}" method="post">
+        <label>Tricks</label>
+        <select name="trick">
+            <option
+                    th:each="trick : ${T(com.greenfox.programmingfoxclub.model.Trick).values()}"
+                    th:value="${trick}"
+                    th:text="${trick}">
+            </option>
+        </select>
+
+        <input type="submit" value="Learn">
+    </form>
+</body>
+</html>

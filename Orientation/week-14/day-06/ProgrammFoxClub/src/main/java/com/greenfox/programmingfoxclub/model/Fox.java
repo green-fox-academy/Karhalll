@@ -51,4 +51,15 @@ public class Fox {
   public void setDrink(Drink drink) {
     this.drink = drink;
   }
+
+  public void addTrick(Trick trick) {
+    if (isNotLearned(trick)) {
+      tricks.add(trick);
+    }
+  }
+
+  private boolean isNotLearned(Trick trick) {
+    return tricks.stream()
+        .noneMatch(t -> t.equals(trick));
+  }
 }

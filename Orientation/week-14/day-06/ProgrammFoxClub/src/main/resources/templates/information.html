@@ -18,7 +18,7 @@
         You know no tricks, yet. Go and learn some.
     </div>
     <div th:if="${fox.getTricks().size()} > 0">
-        <li th:each="trick : ${fox.getTricks()}">
+        <li th:each="trick : ${fox.getTricks()}" th:text="${trick}">
     </div>
 
 </body>
