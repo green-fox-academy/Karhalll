@@ -31,4 +31,10 @@ public class MainController {
   public String loginAs(@RequestParam String name) {;
     return "redirect:/?name=" + name;
   }
+
+  @GetMapping("/nutritionStore")
+  public String nutritionStore(@RequestParam String name, Model model) {
+    model.addAttribute("fox", foxService.getFox(name));
+    return "nutrition-store";
+  }
 }

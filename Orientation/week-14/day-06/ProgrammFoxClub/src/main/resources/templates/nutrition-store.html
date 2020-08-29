@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nutrition Store</title>
+</head>
+<body>
+    <nav th:replace="navigation-bar :: nav-bar"></nav>
+
+    <p></p>
+    <form th:action="'/nutritionStore?name=' + ${fox.getName()}" method="post">
+        <label>Food</label>
+        <select name = "food">
+            <option
+                    th:each="food : ${T(com.greenfox.programmingfoxclub.model.Food).values()}"
+                    th:value="${food}"
+                    th:text ="${food}"
+                    th:selected="${food} == ${fox.getFood()}">
+            </option>
+        </select>
+        <label>Drink</label>
+        <select name = "drink">
+            <option
+                    th:each="drink : ${T(com.greenfox.programmingfoxclub.model.Drink).values()}"
+                    th:value="${drink}"
+                    th:text ="${drink}"
+                    th:selected="${drink} == ${fox.getDrink()}">
+            </option>
+        </select>
+        <input type="submit" value="Change">
+    </form>
+
+</body>
+</html>
