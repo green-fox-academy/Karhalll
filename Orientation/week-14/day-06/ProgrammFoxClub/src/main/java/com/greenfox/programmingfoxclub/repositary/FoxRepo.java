@@ -1,7 +1,6 @@
 package com.greenfox.programmingfoxclub.repositary;
 
 import com.greenfox.programmingfoxclub.model.Fox;
-import com.greenfox.programmingfoxclub.model.Trick;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class FoxRepo {
     this.foxList = new ArrayList<>();
   }
 
-  public boolean contains(String name) {
+  public boolean containsFox(String name) {
     return foxList.stream()
         .anyMatch(fox -> fox.getName().equals(name));
   }

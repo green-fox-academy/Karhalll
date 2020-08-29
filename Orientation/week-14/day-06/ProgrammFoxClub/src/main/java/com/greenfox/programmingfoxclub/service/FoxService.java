@@ -32,6 +32,6 @@ public class FoxService {
   }
 
   private boolean isFox(String name) {
-    return foxRepo.contains(name);
+    return foxRepo.containsFox(name);
   }
 }
