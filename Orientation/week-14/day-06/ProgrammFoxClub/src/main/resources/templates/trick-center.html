@@ -13,7 +13,7 @@
         <label>Tricks</label>
         <select name="trick">
             <option
-                    th:each="trick : ${T(com.greenfox.programmingfoxclub.model.Trick).values()}"
+                    th:each="trick : ${tricksToLearn}"
                     th:value="${trick}"
                     th:text="${trick}">
             </option>

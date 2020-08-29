@@ -30,8 +30,4 @@ public class FoxRepo {
   public void addFox(String name) {
     foxList.add(new Fox(name));
   }
-
-  public List<Trick> getTricksByName(String name) {
-    return getFoxByName(name).getTricks();
-  }
 }
