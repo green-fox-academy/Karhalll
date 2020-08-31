@@ -9,7 +9,7 @@
     <nav th:replace="navigation-bar :: nav-bar"></nav>
 
     <p></p>
-    <form th:action="'/trickCenter?name=' + ${fox.getName()}" method="post">
+    <form th:if="${tricksToLearn.size() > 0}" th:action="'/trickCenter?name=' + ${fox.getName()}" method="post">
         <label>Tricks</label>
         <select name="trick">
             <option
@@ -21,5 +21,6 @@
 
         <input type="submit" value="Learn">
     </form>
+    <p th:unless="${tricksToLearn.size() > 0}" th:text="'There are no more tricks to learn.'"></p>
 </body>
 </html>
