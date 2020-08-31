@@ -5,7 +5,6 @@ import com.greenfox.programmingfoxclub.service.FoxService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,10 +33,16 @@ public class MainController {
 
   @PostMapping("/login")
   public String loginAs(@RequestParam String name, @RequestParam String submit) {
+    if (name.equals("")) {
+      return "redirect:/login?error=You haven't provided any name!";
+    }
     if (submit.equals("Create New")) {
+      if (foxService.isFox(name)) {
+        return "redirect:/login?error=This fox already exist!";
+      }
       return "redirect:/?name=" + name;
     }
-    if (name.equals("") || foxService.isNotFox(name)) {
+    if (!foxService.isFox(name)) {
       return "redirect:/login?error=You have provided a name that has not been used before, add it as a new one!";
     }
     return "redirect:/?name=" + name;

@@ -25,13 +25,13 @@ public class FoxService {
   }
 
   public Fox getFox(String name) {
-    if (isNotFox(name)) {
+    if (!isFox(name)) {
       foxRepo.addFox(name);
     }
     return foxRepo.getFoxByName(name);
   }
 
-  public boolean isNotFox(String name) {
-    return !foxRepo.containsFox(name);
+  public boolean isFox(String name) {
+    return foxRepo.containsFox(name);
   }
 }
