@@ -1,6 +1,6 @@
 package com.greenfox.programmingfoxclub.model;
 
-public enum Drink {
+public enum Drink implements Nutrient {
   water,
   beer,
   rum,

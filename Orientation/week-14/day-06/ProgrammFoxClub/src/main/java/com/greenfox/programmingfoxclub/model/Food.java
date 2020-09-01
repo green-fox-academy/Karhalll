@@ -1,6 +1,6 @@
 package com.greenfox.programmingfoxclub.model;
 
-public enum Food {
+public enum Food implements Nutrient {
   honey,
   chicken,
   stew;

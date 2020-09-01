@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Action History</title>
+</head>
+<body>
+    <nav th:replace="navigation-bar :: nav-bar"></nav>
+
+    <p th:each="log : ${fox.getChangeLog().getHistoryActions()}">
+        <li th:text="${log.toString()}"></li>
+    </p>
+
+
+</body>
+</html>

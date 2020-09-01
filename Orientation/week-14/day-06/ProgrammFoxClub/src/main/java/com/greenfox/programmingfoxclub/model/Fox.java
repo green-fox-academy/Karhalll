@@ -1,5 +1,6 @@
 package com.greenfox.programmingfoxclub.model;
 
+import com.greenfox.programmingfoxclub.model.history.HistoryLog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ public class Fox {
   private List<Trick> tricks;
   private Food food;
   private Drink drink;
+  private HistoryLog changeLog;
 
   public Fox(String name) {
     this(name, new ArrayList<>(), Food.chicken, Drink.water);
@@ -18,6 +20,7 @@ public class Fox {
     this.tricks = tricks;
     this.food = food;
     this.drink = drink;
+    this.changeLog = new HistoryLog();
   }
 
   public String getName() {
@@ -41,6 +44,7 @@ public class Fox {
   }
 
   public void setFood(Food food) {
+    changeLog.logNutritionChange(this.food, food);
     this.food = food;
   }
 
@@ -49,11 +53,21 @@ public class Fox {
   }
 
   public void setDrink(Drink drink) {
+    changeLog.logNutritionChange(this.drink, drink);
     this.drink = drink;
+  }
+
+  public HistoryLog getChangeLog() {
+    return changeLog;
+  }
+
+  public void setChangeLog(HistoryLog changeLog) {
+    this.changeLog = changeLog;
   }
 
   public void addTrick(Trick trick) {
     if (isNotLearned(trick)) {
+      changeLog.logLearnedTrick(trick);
       tricks.add(trick);
     }
   }

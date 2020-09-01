@@ -61,4 +61,10 @@ public class MainController {
     model.addAttribute("tricksToLearn", foxService.tricksToLearn(name));
     return "trick-center";
   }
+
+  @GetMapping("/actionHistory")
+  public String actionHistory(@RequestParam String name, Model model) {
+    model.addAttribute("fox", foxService.getFox(name));
+    return "action-history";
+  }
 }
