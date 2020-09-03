@@ -29,6 +29,10 @@ public class HistoryLog {
   }
 
   public void logNutritionChange(Nutrient oldNutrient, Nutrient newNutrient) {
+    if (oldNutrient.equals(newNutrient)) {
+      return;
+    }
+
     historyActions.add(new NutrientAction(oldNutrient, newNutrient));
   }
 
