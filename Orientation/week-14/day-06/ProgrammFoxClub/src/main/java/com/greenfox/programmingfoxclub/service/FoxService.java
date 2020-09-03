@@ -18,6 +18,9 @@ public class FoxService {
   }
 
   public List<Trick> tricksToLearn(String name) {
+    if (!isFox(name)) {
+      return null;
+    }
     return Arrays.stream(Trick.values())
         .filter(trick -> getFox(name).getTricks().stream()
                             .noneMatch(learnedTrick -> learnedTrick == trick))
@@ -25,10 +28,15 @@ public class FoxService {
   }
 
   public Fox getFox(String name) {
-    if (!isFox(name)) {
-      foxRepo.addFox(name);
+    if (isFox(name)) {
+      return foxRepo.getFoxByName(name);
+    } else {
+      return null;
     }
-    return foxRepo.getFoxByName(name);
+  }
+
+  public void addFox(String name) {
+    foxRepo.addFox(name);
   }
 
   public boolean isFox(String name) {

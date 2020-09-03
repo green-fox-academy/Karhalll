@@ -22,7 +22,7 @@ public class MainController {
   @GetMapping("/")
   public String index(@RequestParam String name, Model model) {
     model.addAttribute("fox", foxService.getFox(name));
-    return "information";
+    return checkFoxAndLoadPage("information", name);
   }
 
   @GetMapping("/login")
@@ -40,6 +40,7 @@ public class MainController {
       if (foxService.isFox(name)) {
         return "redirect:/login?error=This fox already exist!";
       }
+      foxService.addFox(name);
       return "redirect:/?name=" + name;
     }
     if (!foxService.isFox(name)) {
@@ -51,7 +52,7 @@ public class MainController {
   @GetMapping("/nutritionStore")
   public String nutritionStore(@RequestParam String name, Model model) {
     model.addAttribute("fox", foxService.getFox(name));
-    return "nutrition-store";
+    return checkFoxAndLoadPage("nutrition-store", name);
   }
 
   @GetMapping("/trickCenter")
@@ -59,12 +60,20 @@ public class MainController {
     model.addAttribute("fox", foxService.getFox(name));
     List<Trick> list = foxService.tricksToLearn(name);
     model.addAttribute("tricksToLearn", foxService.tricksToLearn(name));
-    return "trick-center";
+    return checkFoxAndLoadPage("trick-center", name);
   }
 
   @GetMapping("/actionHistory")
   public String actionHistory(@RequestParam String name, Model model) {
     model.addAttribute("fox", foxService.getFox(name));
-    return "action-history";
+    return checkFoxAndLoadPage("action-history", name);
+  }
+
+  private String checkFoxAndLoadPage(String pageToLoad, String foxName) {
+    if (foxService.isFox(foxName)) {
+      return pageToLoad;
+    } else {
+      return "redirect:/login";
+    }
   }
 }
