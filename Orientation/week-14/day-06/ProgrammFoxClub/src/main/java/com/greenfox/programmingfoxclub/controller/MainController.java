@@ -1,14 +1,11 @@
 package com.greenfox.programmingfoxclub.controller;
 
-import com.greenfox.programmingfoxclub.model.Trick;
 import com.greenfox.programmingfoxclub.service.FoxService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 public class MainController {
@@ -44,7 +41,8 @@ public class MainController {
       return "redirect:/?name=" + name;
     }
     if (!foxService.isFox(name)) {
-      return "redirect:/login?error=You have provided a name that has not been used before, add it as a new one!";
+      return "redirect:/login?error="
+          + "You have provided a name that has not been used before, add it as a new one!";
     }
     return "redirect:/?name=" + name;
   }
@@ -58,7 +56,6 @@ public class MainController {
   @GetMapping("/trickCenter")
   public String trickCenter(@RequestParam String name, Model model) {
     model.addAttribute("fox", foxService.getFox(name));
-    List<Trick> list = foxService.tricksToLearn(name);
     model.addAttribute("tricksToLearn", foxService.tricksToLearn(name));
     return checkFoxAndLoadPage("trick-center", name);
   }
