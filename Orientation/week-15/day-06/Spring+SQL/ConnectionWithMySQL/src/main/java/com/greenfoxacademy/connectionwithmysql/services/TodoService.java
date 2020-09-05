@@ -4,8 +4,11 @@ import com.greenfoxacademy.connectionwithmysql.models.Todo;
 import java.util.List;
 
 public interface TodoService {
+
+  Todo getById(long id);
   List<Todo> listAll();
   List<Todo> listByDone(Boolean state);
-  void addTodo(Todo todo);
-  void deleteTodoById(long id);
+  void add(Todo todo);
+  void editById(long id, Todo todo);
+  void deleteById(long id);
 }

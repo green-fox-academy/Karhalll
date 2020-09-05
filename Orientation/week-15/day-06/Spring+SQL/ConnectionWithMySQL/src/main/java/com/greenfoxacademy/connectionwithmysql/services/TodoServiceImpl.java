@@ -17,6 +17,11 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
+  public Todo getById(long id) {
+    return todoRepository.findById(id).get();
+  }
+
+  @Override
   public List<Todo> listAll() {
     return todoRepository.findAll();
   }
@@ -29,13 +34,18 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public void addTodo(Todo todo) {
+  public void add(Todo todo) {
     todoRepository.save(todo);
   }
 
   @Override
-  public void deleteTodoById(long id) {
-    Todo todoToDelete = todoRepository.findById(id).get();
-    todoRepository.delete(todoToDelete);
+  public void editById(long id, Todo todo) {
+    todo.setId(id);
+    todoRepository.save(todo);
+  }
+
+  @Override
+  public void deleteById(long id) {
+    todoRepository.delete(getById(id));
   }
 }
