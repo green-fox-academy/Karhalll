@@ -39,8 +39,7 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public void editById(long id, Todo todo) {
-    todo.setId(id);
+  public void editById(Todo todo) {
     todoRepository.save(todo);
   }
 

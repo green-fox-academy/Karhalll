@@ -9,6 +9,6 @@ public interface TodoService {
   List<Todo> listAll();
   List<Todo> listByDone(Boolean state);
   void add(Todo todo);
-  void editById(long id, Todo todo);
+  void editById(Todo todo);
   void deleteById(long id);
 }
