@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1>Todos for today</h1>
     <table>
         <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Urgent</th>
-            <th>Done</th>
+            <th>ID</th>
+            <th>ACTION</th>
+            <th>DONE</th>
+            <th>URGENT</th>
         </tr>
         <tr th:each="todo : ${todos}">
             <td th:text="${todo.getId()}"></td>
             <td th:text="${todo.getTitle()}"></td>
-            <td th:text="${todo.isUrgent()}"></td>
             <td th:text="${todo.isDone()}"></td>
+            <td th:text="${todo.isUrgent()}"></td>
         </tr>
     </table>
 </body>
