@@ -27,4 +27,8 @@ public class TodoServiceImpl implements TodoService {
         .filter(todo -> todo.isDone() == state)
         .collect(Collectors.toList());
   }
+
+  public void addTodo(Todo todo) {
+    todoRepository.save(todo);
+  }
 }
