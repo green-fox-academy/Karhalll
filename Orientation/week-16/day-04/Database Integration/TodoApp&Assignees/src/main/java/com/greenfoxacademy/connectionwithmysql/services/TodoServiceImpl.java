@@ -34,6 +34,16 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
+  public List<Todo> listAllBy(String searchTerm, String searchBy) {
+    return switch (searchBy) {
+      case "Title" -> todoRepository.findAllByTitleContainsIgnoreCase(searchTerm);
+      case "Content" -> todoRepository.findAllByContentContainsIgnoreCase(searchTerm);
+      case "Description" -> todoRepository.findAllByDescriptionContainsIgnoreCase(searchTerm);
+      default -> null;
+    };
+  }
+
+  @Override
   public void add(Todo todo) {
     todoRepository.save(todo);
   }

@@ -10,12 +10,25 @@
     <h1>TODOS FOR TODAY:</h1>
 
     <a href="/todo/add">Add new todo</a>
+    <a href="/todo/assignees">List of Assignees</a>
+    <p></p>
+
+    <form action="/todo/search" method="post">
+        <label>Search: </label>
+        <input type="text" name="search_term">
+
+        <label> by: </label>
+        <input type="submit" name="search_by" value="Title">
+        <input type="submit" name="search_by" value="Content">
+        <input type="submit" name="search_by" value="Description">
+    </form>
+
     <p></p>
 
     <table>
         <tr>
             <th>ID</th>
-            <th>ACTION</th>
+            <th>TITLE</th>
             <th>DONE</th>
             <th>URGENT</th>
         </tr>

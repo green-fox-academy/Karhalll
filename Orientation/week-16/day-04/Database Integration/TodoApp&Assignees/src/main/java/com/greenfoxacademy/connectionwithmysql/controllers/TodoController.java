@@ -1,7 +1,7 @@
 package com.greenfoxacademy.connectionwithmysql.controllers;
 
 import com.greenfoxacademy.connectionwithmysql.models.Todo;
-import com.greenfoxacademy.connectionwithmysql.services.TodoServiceImpl;
+import com.greenfoxacademy.connectionwithmysql.services.TodoService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/todo")
 public class TodoController {
 
-  private final TodoServiceImpl todoService;
+  private final TodoService todoService;
 
-  public TodoController(TodoServiceImpl todoService) {
+  public TodoController(TodoService todoService) {
     this.todoService = todoService;
   }
 
-  @GetMapping({"/", "/list"})
+  @GetMapping({"", "/", "/list"})
   public String list(@RequestParam(required = false) Boolean isActive, Model model) {
     List<Todo> todos;
     if (isActive == null) {
@@ -31,7 +31,7 @@ public class TodoController {
       todos = todoService.listByDone(!isActive);
     }
     model.addAttribute("todos", todos);
-    return "todolist";
+    return "todo-list";
   }
 
   @GetMapping("/add")
@@ -62,5 +62,13 @@ public class TodoController {
   public String editTodoById(@ModelAttribute Todo todo) {
     todoService.editById(todo);
     return "redirect:/todo/list";
+  }
+
+  @PostMapping("/search")
+  public String searchBy(@RequestParam("search_term") String searchTerm,
+                         @RequestParam("search_by") String searchBy,
+                         Model model) {
+    model.addAttribute("todos", todoService.listAllBy(searchTerm, searchBy));
+    return "todo-list";
   }
 }
