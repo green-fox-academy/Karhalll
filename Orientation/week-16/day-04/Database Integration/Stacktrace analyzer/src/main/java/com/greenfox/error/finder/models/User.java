@@ -1,11 +1,9 @@
 package com.greenfox.error.finder.models;
 
 public class User {
+
     private String firstName;
     private String lastName;
-
-    public User() {
-    }
 
     public String getFirstName() {
         return firstName;
