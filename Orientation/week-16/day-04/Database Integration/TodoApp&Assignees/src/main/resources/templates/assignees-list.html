@@ -9,7 +9,8 @@
 <body>
     <h1>List of Assignees:</h1>
 
-    <a href="/todo/assigness/add">Add new Assignee</a>
+    <a href="/assignee/add">Add new Assignee</a>
+    <a href="/todo">List of Todos</a>
     <p></p>
 
     <p></p>
@@ -17,18 +18,18 @@
     <table>
         <tr>
             <th>ID</th>
-            <th>TITLE</th>
-            <th>DONE</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
         </tr>
         <tr th:each="assignee : ${assignees}">
             <td th:text="${assignee.getId()}"></td>
             <td th:text="${assignee.getName()}"></td>
-            <td th:text="${assignee.isEmail()}"></td>
+            <td th:text="${assignee.getEmail()}"></td>
             <td>
-                <a th:href="|/todo/${assignee.getId()}/delete|">delete</a>
+                <a th:href="|/assignee/${assignee.getId()}/delete|">delete</a>
             </td>
             <td>
-                <a th:href="|/todo/${assignee.getId()}/edit|">edit</a>
+                <a th:href="|/assignee/${assignee.getId()}/edit|">edit</a>
             </td>
         </tr>
     </table>

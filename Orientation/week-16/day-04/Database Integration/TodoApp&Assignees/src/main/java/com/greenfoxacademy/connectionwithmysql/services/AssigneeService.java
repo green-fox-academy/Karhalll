@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface AssigneeService {
   List<Assignee> listAll();
+  void add(Assignee assignee);
 }

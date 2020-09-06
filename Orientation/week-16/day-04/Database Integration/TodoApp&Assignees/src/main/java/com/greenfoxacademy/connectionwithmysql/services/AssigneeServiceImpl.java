@@ -19,4 +19,9 @@ public class AssigneeServiceImpl implements AssigneeService {
   public List<Assignee> listAll() {
     return assigneeRepository.findAll();
   }
+
+  @Override
+  public void add(Assignee assignee) {
+    assigneeRepository.save(assignee);
+  }
 }
