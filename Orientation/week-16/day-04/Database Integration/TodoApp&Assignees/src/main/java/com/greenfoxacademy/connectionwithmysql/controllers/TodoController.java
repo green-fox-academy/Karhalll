@@ -1,6 +1,8 @@
 package com.greenfoxacademy.connectionwithmysql.controllers;
 
 import com.greenfoxacademy.connectionwithmysql.models.Todo;
+import com.greenfoxacademy.connectionwithmysql.services.AssigneeService;
+import com.greenfoxacademy.connectionwithmysql.services.AssigneeServiceImpl;
 import com.greenfoxacademy.connectionwithmysql.services.TodoService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -17,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TodoController {
 
   private final TodoService todoService;
+  private final AssigneeService assigneeService;
 
-  public TodoController(TodoService todoService) {
+  public TodoController(TodoService todoService, AssigneeService assigneeService) {
     this.todoService = todoService;
+    this.assigneeService = assigneeService;
   }
 
   @GetMapping({"", "/", "/list"})
@@ -55,6 +59,7 @@ public class TodoController {
   @GetMapping("/{id}/edit")
   public String editTodoByIdPage(@PathVariable long id, Model model) {
     model.addAttribute("todo", todoService.getById(id));
+    model.addAttribute("assignees", assigneeService.listAll());
     return "edit";
   }
 

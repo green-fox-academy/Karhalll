@@ -75,4 +75,12 @@ public class Todo {
   public void setDone(boolean done) {
     this.done = done;
   }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
+  }
 }

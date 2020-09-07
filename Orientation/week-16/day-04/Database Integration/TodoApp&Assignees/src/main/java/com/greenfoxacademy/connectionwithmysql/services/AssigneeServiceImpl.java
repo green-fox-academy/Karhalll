@@ -21,7 +21,24 @@ public class AssigneeServiceImpl implements AssigneeService {
   }
 
   @Override
+  public Assignee getById(long id) {
+    return assigneeRepository.findById(id).get();
+  }
+
+  @Override
   public void add(Assignee assignee) {
     assigneeRepository.save(assignee);
+  }
+
+  @Override
+  public void editById(Assignee assignee) {
+    assigneeRepository.save(assignee);
+  }
+
+  @Override
+  public void deleteById(long id) {
+    Assignee assigneeToDelete = getById(id);
+    assigneeToDelete.getTodos().forEach(todo -> todo.setAssignee(null));
+    assigneeRepository.delete(assigneeToDelete);
   }
 }
