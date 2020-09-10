@@ -1,7 +1,6 @@
 package com.greenfoxacademy.connectionwithmysql.models;
 
 import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -25,8 +26,12 @@ public class Todo {
   private boolean urgent;
   private boolean done;
 
+  @Temporal(TemporalType.DATE)
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date creationDate;
-  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+
+  @Temporal(TemporalType.DATE)
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date dueDate;
 
   @ManyToOne

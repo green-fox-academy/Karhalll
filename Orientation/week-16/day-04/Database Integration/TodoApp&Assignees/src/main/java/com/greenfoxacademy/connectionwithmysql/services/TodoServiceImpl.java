@@ -2,7 +2,9 @@ package com.greenfoxacademy.connectionwithmysql.services;
 
 import com.greenfoxacademy.connectionwithmysql.models.Todo;
 import com.greenfoxacademy.connectionwithmysql.repositories.TodoRepository;
-import java.util.Calendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
@@ -40,13 +42,23 @@ public class TodoServiceImpl implements TodoService {
       case "Title" -> todoRepository.findAllByTitleContainsIgnoreCase(searchTerm);
       case "Content" -> todoRepository.findAllByContentContainsIgnoreCase(searchTerm);
       case "Description" -> todoRepository.findAllByDescriptionContainsIgnoreCase(searchTerm);
+      case "Assignee's name" -> todoRepository.findAllByAssigneeNameContainsIgnoreCase(searchTerm);
+      default -> null;
+    };
+  }
+
+  @Override
+  public List<Todo> listAllByDate(String dateToSearch, String searchBy) throws ParseException {
+    return switch (searchBy) {
+      case "Create Date" -> todoRepository.findAllByCreationDate(new SimpleDateFormat("yyyy-MM-dd").parse(dateToSearch));
+      case "Due Date" -> todoRepository.findAllByDueDate(new SimpleDateFormat("yyyy-MM-dd").parse(dateToSearch));
       default -> null;
     };
   }
 
   @Override
   public void add(Todo todo) {
-    todo.setCreationDate(Calendar.getInstance().getTime());
+    todo.setCreationDate(new Date());
     todoRepository.save(todo);
   }
 

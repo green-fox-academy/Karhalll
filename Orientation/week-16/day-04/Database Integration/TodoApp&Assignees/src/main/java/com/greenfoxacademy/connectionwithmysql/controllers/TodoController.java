@@ -3,6 +3,7 @@ package com.greenfoxacademy.connectionwithmysql.controllers;
 import com.greenfoxacademy.connectionwithmysql.models.Todo;
 import com.greenfoxacademy.connectionwithmysql.services.AssigneeService;
 import com.greenfoxacademy.connectionwithmysql.services.TodoService;
+import java.text.ParseException;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,10 +70,15 @@ public class TodoController {
   }
 
   @PostMapping("/search")
-  public String searchBy(@RequestParam("search_term") String searchTerm,
+  public String searchBy(@RequestParam(name = "search_term", required = false) String searchTerm,
+                         @RequestParam(name = "search_date", required = false) String date,
                          @RequestParam("search_by") String searchBy,
-                         Model model) {
-    model.addAttribute("todos", todoService.listAllBy(searchTerm, searchBy));
+                         Model model) throws ParseException {
+    if (searchTerm != null) {
+      model.addAttribute("todos", todoService.listAllBy(searchTerm, searchBy));
+    } else if (date != null) {
+      model.addAttribute("todos", todoService.listAllByDate(date, searchBy));
+    }
     return "todo-list";
   }
 }

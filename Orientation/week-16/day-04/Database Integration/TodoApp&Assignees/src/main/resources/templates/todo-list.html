@@ -21,6 +21,17 @@
         <input type="submit" name="search_by" value="Title">
         <input type="submit" name="search_by" value="Content">
         <input type="submit" name="search_by" value="Description">
+        <input type="submit" name="search_by" value="Assignee's name">
+    </form>
+
+    <p></p>
+    <form action="/todo/search" method="post">
+        <label>Search: </label>
+        <input type="date" name="search_date">
+
+        <label> by: </label>
+        <input type="submit" name="search_by" value="Create Date">
+        <input type="submit" name="search_by" value="Due Date">
     </form>
 
     <p></p>
