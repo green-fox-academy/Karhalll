@@ -38,7 +38,13 @@
             <td th:text="${todo.getTitle()}"></td>
             <td th:text="${todo.isDone()}"></td>
             <td th:text="${todo.isUrgent()}"></td>
-            <td th:text="${todo.getAssignee()?.getName()}"></td>
+            <td>
+                <span th:if="${todo.getAssignee() != null}">
+                    <a
+                            th:href="'/assignee/' + ${todo.assignee.getId()} + '/todos'"
+                            th:text="${todo.getAssignee().getName()}"></a>
+                </span>
+            </td>
             <td>
                 <a th:href="|/todo/${todo.getId()}/delete|">delete</a>
             </td>
