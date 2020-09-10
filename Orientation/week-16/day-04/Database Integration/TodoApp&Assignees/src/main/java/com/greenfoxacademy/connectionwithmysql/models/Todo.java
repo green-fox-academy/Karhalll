@@ -1,5 +1,8 @@
 package com.greenfoxacademy.connectionwithmysql.models;
 
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "todos")
@@ -20,6 +24,10 @@ public class Todo {
   private String description;
   private boolean urgent;
   private boolean done;
+
+  private Date creationDate;
+  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+  private Date dueDate;
 
   @ManyToOne
   @JoinColumn
@@ -82,5 +90,21 @@ public class Todo {
 
   public void setAssignee(Assignee assignee) {
     this.assignee = assignee;
+  }
+
+  public Date getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(Date creationDate) {
+    this.creationDate = creationDate;
+  }
+
+  public Date getDueDate() {
+    return dueDate;
+  }
+
+  public void setDueDate(Date dueDate) {
+    this.dueDate = dueDate;
   }
 }

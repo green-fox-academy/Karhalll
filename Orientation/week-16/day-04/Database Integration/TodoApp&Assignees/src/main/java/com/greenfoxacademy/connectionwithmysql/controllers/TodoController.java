@@ -2,7 +2,6 @@ package com.greenfoxacademy.connectionwithmysql.controllers;
 
 import com.greenfoxacademy.connectionwithmysql.models.Todo;
 import com.greenfoxacademy.connectionwithmysql.services.AssigneeService;
-import com.greenfoxacademy.connectionwithmysql.services.AssigneeServiceImpl;
 import com.greenfoxacademy.connectionwithmysql.services.TodoService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -65,7 +64,7 @@ public class TodoController {
 
   @PostMapping("/edit")
   public String editTodoById(@ModelAttribute Todo todo) {
-    todoService.editById(todo);
+    todoService.edit(todo);
     return "redirect:/todo/list";
   }
 

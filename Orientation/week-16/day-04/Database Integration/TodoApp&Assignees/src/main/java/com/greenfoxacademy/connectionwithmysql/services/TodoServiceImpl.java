@@ -2,6 +2,7 @@ package com.greenfoxacademy.connectionwithmysql.services;
 
 import com.greenfoxacademy.connectionwithmysql.models.Todo;
 import com.greenfoxacademy.connectionwithmysql.repositories.TodoRepository;
+import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
@@ -45,11 +46,14 @@ public class TodoServiceImpl implements TodoService {
 
   @Override
   public void add(Todo todo) {
+    todo.setCreationDate(Calendar.getInstance().getTime());
     todoRepository.save(todo);
   }
 
   @Override
-  public void editById(Todo todo) {
+  public void edit(Todo todo) {
+    Todo oldTodo = getById(todo.getId());
+    todo.setCreationDate(oldTodo.getCreationDate());
     todoRepository.save(todo);
   }
 

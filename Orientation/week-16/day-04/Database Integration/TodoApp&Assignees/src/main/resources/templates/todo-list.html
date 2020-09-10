@@ -28,13 +28,16 @@
     <table>
         <tr>
             <th>ID</th>
+            <th>CREATION DATE</th>
             <th>TITLE</th>
             <th>DONE</th>
             <th>URGENT</th>
             <th>ASSIGNEE</th>
+            <th>DUE DATE</th>
         </tr>
         <tr th:each="todo : ${todos}">
             <td th:text="${todo.getId()}"></td>
+            <td th:text="${todo.getCreationDate()}"></td>
             <td th:text="${todo.getTitle()}"></td>
             <td th:text="${todo.isDone()}"></td>
             <td th:text="${todo.isUrgent()}"></td>
@@ -45,6 +48,7 @@
                             th:text="${todo.getAssignee().getName()}"></a>
                 </span>
             </td>
+            <td th:text="${todo.getDueDate()}"></td>
             <td>
                 <a th:href="|/todo/${todo.getId()}/delete|">delete</a>
             </td>
