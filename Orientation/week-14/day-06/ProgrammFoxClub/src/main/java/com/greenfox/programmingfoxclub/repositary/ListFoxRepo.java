@@ -1,24 +1,24 @@
 package com.greenfox.programmingfoxclub.repositary;
 
 import com.greenfox.programmingfoxclub.model.Fox;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class FoxRepo {
+public class ListFoxRepo implements FoxRepo {
   List<Fox> foxList;
 
-  public FoxRepo() {
+  public ListFoxRepo() {
     this.foxList = new ArrayList<>();
   }
 
+  @Override
   public boolean containsFox(String name) {
     return foxList.stream()
         .anyMatch(fox -> fox.getName().equals(name));
   }
 
+  @Override
   public Fox getFoxByName(String name) {
     return foxList.stream()
         .filter(fox -> fox.getName().equals(name))
@@ -26,6 +26,7 @@ public class FoxRepo {
         .get();
   }
 
+  @Override
   public void addFox(String name) {
     foxList.add(new Fox(name));
   }

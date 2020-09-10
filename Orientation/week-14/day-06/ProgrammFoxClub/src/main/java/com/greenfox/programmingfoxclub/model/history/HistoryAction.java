@@ -3,10 +3,19 @@ package com.greenfox.programmingfoxclub.model.history;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class HistoryAction {
-  private final LocalDateTime date;
-  private final String action;
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
+  private LocalDateTime date;
+  private String action;
 
   protected HistoryAction(String action) {
     date = LocalDateTime.now();
