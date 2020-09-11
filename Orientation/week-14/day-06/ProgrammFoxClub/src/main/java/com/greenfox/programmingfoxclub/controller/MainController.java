@@ -50,6 +50,8 @@ public class MainController {
   @GetMapping("/nutritionStore")
   public String nutritionStore(@RequestParam String name, Model model) {
     model.addAttribute("fox", foxService.getByName(name));
+    model.addAttribute("foods", foxService.getAllAvailableFoods());
+    model.addAttribute("drinks", foxService.getAllAvailableDrinks());
     return checkFoxAndLoadPage("nutrition-store", name);
   }
 

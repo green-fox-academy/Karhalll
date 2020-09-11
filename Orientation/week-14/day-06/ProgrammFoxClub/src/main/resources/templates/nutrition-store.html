@@ -13,18 +13,18 @@
         <label>Food</label>
         <select name = "food">
             <option
-                    th:each="food : ${T(com.greenfox.programmingfoxclub.model.Food).values()}"
-                    th:value="${food}"
-                    th:text ="${food}"
+                    th:each="food : ${foods}"
+                    th:value="${food.id}"
+                    th:text ="${food.name}"
                     th:selected="${food} == ${fox.getFood()}">
             </option>
         </select>
         <label>Drink</label>
         <select name = "drink">
             <option
-                    th:each="drink : ${T(com.greenfox.programmingfoxclub.model.Drink).values()}"
-                    th:value="${drink}"
-                    th:text ="${drink}"
+                    th:each="drink : ${drinks}"
+                    th:value="${drink.id}"
+                    th:text ="${drink.name}"
                     th:selected="${drink} == ${fox.getDrink()}">
             </option>
         </select>

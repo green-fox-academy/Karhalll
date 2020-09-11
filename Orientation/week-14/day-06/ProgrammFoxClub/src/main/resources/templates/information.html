@@ -10,7 +10,7 @@
 
     <img src="/imgs/greenfox.png">
 
-    <p th:text="|This is Mr. ${fox.getName()}. Currently living on ${fox.getFood()} and ${fox.getDrink()}. He Knows ${fox.getTricks().size()} tricks.|"></p>
+    <p th:text="|This is Mr. ${fox.getName()}. Currently living on ${fox.getFood().getName()} and ${fox.getDrink().getName()}. He Knows ${fox.getTricks().size()} tricks.|"></p>
 
     <h1>Known tricks</h1>
 
