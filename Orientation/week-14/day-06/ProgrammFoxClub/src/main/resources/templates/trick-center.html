@@ -12,10 +12,11 @@
     <form th:if="${tricksToLearn.size() > 0}" th:action="'/trickCenter?name=' + ${fox.getName()}" method="post">
         <label>Tricks</label>
         <select name="trick">
+
             <option
-                    th:each="trick : ${tricksToLearn}"
-                    th:value="${trick}"
-                    th:text="${trick}">
+                    th:each="trick: ${tricksToLearn}" th:object="${trick}"
+                    th:value="*{id}"
+                    th:text="*{name}">
             </option>
         </select>
 

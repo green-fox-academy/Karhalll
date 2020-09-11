@@ -18,14 +18,14 @@
         You know no tricks, yet. Go and learn some.
     </div>
     <div th:if="${fox.getTricks().size()} > 0">
-        <li th:each="trick : ${fox.getTricks()}" th:text="${trick}">
+        <li th:each="trick : ${fox.getTricks()}" th:text="${trick.name}">
     </div>
 
-    <h1>Action history</h1>
+<!--    <h1>Action history</h1>-->
 
-    <p th:each="log : ${fox.getChangeLog().getLastNActions(5)}">
-    <li th:text="${log.toString()}"></li>
-    </p>
+<!--    <p th:each="log : ${fox.getChangeLog().getLastNActions(5)}">-->
+<!--    <li th:text="${log.toString()}"></li>-->
+<!--    </p>-->
 
 </body>
 </html>

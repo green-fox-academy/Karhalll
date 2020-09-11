@@ -24,24 +24,28 @@ public class FoxService {
       return null;
     }
     return trickRepo.findAll().stream()
-        .filter(trick -> getFox(name).getTricks().stream()
+        .filter(trick -> getByName(name).getTricks().stream()
                             .noneMatch(learnedTrick -> learnedTrick == trick))
         .collect(Collectors.toList());
   }
 
-  public Fox getFox(String name) {
-    if (isFox(name)) {
-      return foxRepo.getFoxByName(name);
-    } else {
-      return null;
-    }
+  public Fox getByName(String foxName) {
+      return foxRepo.getFoxByName(foxName);
   }
 
-  public void addFox(String name) {
-    foxRepo.addFox(name);
+  public void creatByName(String newFoxName) {
+    foxRepo.save(new Fox(newFoxName));
   }
 
-  public boolean isFox(String name) {
-    return foxRepo.containsFox(name);
+  public boolean isFox(String foxName) {
+    return getByName(foxName) != null;
+  }
+
+  public void learnTrick(String foxName, Trick newTrick) {
+    Fox fox = getByName(foxName);
+    List<Trick> tricks = fox.getTricks();
+    tricks.add(newTrick);
+    fox.setTricks(tricks);
+    foxRepo.save(fox);
   }
 }

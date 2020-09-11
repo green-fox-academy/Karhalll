@@ -1,16 +1,20 @@
 package com.greenfox.programmingfoxclub.model;
 
-import com.greenfox.programmingfoxclub.model.history.HistoryLog;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "foxes")
 public class Fox {
 
   @Id
@@ -18,25 +22,24 @@ public class Fox {
   private long id;
   private String name;
 
+  @ManyToOne
+  @JoinColumn
+  private User user;
+  @ManyToOne
+  @JoinColumn
+  private Food food;
+  @ManyToOne
+  @JoinColumn
+  private Drink drink;
   @ManyToMany
   private List<Trick> tricks;
-  private Food food;
-  private Drink drink;
-  @OneToOne
-  private HistoryLog changeLog;
+  @OneToMany(mappedBy = "fox", cascade = CascadeType.PERSIST,orphanRemoval = true)
+  private List<HistoryAction> historyActions;
 
   public Fox() {}
 
   public Fox(String name) {
-    this(name, new ArrayList<>(), Food.chicken, Drink.water);
-  }
-
-  private Fox(String name, List<Trick> tricks, Food food, Drink drink) {
     this.name = name;
-    this.tricks = tricks;
-    this.food = food;
-    this.drink = drink;
-    this.changeLog = new HistoryLog();
   }
 
   public long getId() {
@@ -55,6 +58,14 @@ public class Fox {
     this.name = name;
   }
 
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
   public List<Trick> getTricks() {
     return tricks;
   }
@@ -68,7 +79,6 @@ public class Fox {
   }
 
   public void setFood(Food food) {
-    changeLog.logNutritionChange(this.food, food);
     this.food = food;
   }
 
@@ -77,27 +87,15 @@ public class Fox {
   }
 
   public void setDrink(Drink drink) {
-    changeLog.logNutritionChange(this.drink, drink);
     this.drink = drink;
   }
 
-  public HistoryLog getChangeLog() {
-    return changeLog;
+  public List<HistoryAction> getHistoryActions() {
+    return historyActions;
   }
 
-  public void setChangeLog(HistoryLog changeLog) {
-    this.changeLog = changeLog;
-  }
-
-  public void addTrick(Trick trick) {
-    if (isNotLearned(trick)) {
-      changeLog.logLearnedTrick(trick);
-      tricks.add(trick);
-    }
-  }
-
-  private boolean isNotLearned(Trick trick) {
-    return tricks.stream()
-        .noneMatch(t -> t.equals(trick));
+  public void setHistoryActions(
+      List<HistoryAction> historyActions) {
+    this.historyActions = historyActions;
   }
 }

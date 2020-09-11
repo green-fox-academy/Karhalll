@@ -1,12 +1,17 @@
 package com.greenfox.programmingfoxclub.model;
 
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +19,15 @@ public class User {
   private String username;
   private String password;
 
+  @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true)
+  private List<Fox> foxes;
+
   public User() {}
+
+  public User(String username, String password) {
+    this.username = username;
+    this.password = password;
+  }
 
   public void setId(long id) {
     this.id = id;
@@ -38,5 +51,13 @@ public class User {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public List<Fox> getFoxes() {
+    return foxes;
+  }
+
+  public void setFoxes(List<Fox> foxes) {
+    this.foxes = foxes;
   }
 }

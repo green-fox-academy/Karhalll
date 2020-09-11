@@ -20,7 +20,7 @@ public class FoxController {
 
   @PostMapping("/nutritionStore")
   public String setNutrition(@RequestParam String name, @RequestParam Food food, @RequestParam Drink drink) {
-    Fox fox = foxService.getFox(name);
+    Fox fox = foxService.getByName(name);
     fox.setFood(food);
     fox.setDrink(drink);
     return "redirect:/?name=" + name;
@@ -28,7 +28,7 @@ public class FoxController {
 
   @PostMapping("/trickCenter")
   public String learnTrick(@RequestParam String name, @RequestParam Trick trick) {
-    foxService.getFox(name).addTrick(trick);
+    foxService.learnTrick(name, trick);
     return "redirect:/?name=" + name;
   }
 }

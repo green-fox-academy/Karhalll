@@ -1,5 +1,6 @@
 package com.greenfox.programmingfoxclub.model.history;
 
+import com.greenfox.programmingfoxclub.model.HistoryAction;
 import com.greenfox.programmingfoxclub.model.Nutrient;
 
 public class NutrientAction extends HistoryAction {
