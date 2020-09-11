@@ -8,8 +8,8 @@
 <body>
     <nav th:replace="navigation-bar :: nav-bar"></nav>
 
-    <p th:each="log : ${fox.getChangeLog().getHistoryActions()}">
-        <li th:text="${log.toString()}"></li>
+    <p th:each="historyAction : ${historyActions}">
+        <li th:text="${historyAction.toString()}"></li>
     </p>
 
 

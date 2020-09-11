@@ -1,7 +1,7 @@
 package com.greenfox.programmingfoxclub.controller;
 
-import com.greenfox.programmingfoxclub.model.Drink;
-import com.greenfox.programmingfoxclub.model.Food;
+import com.greenfox.programmingfoxclub.model.nutrient.Drink;
+import com.greenfox.programmingfoxclub.model.nutrient.Food;
 import com.greenfox.programmingfoxclub.model.Trick;
 import com.greenfox.programmingfoxclub.service.FoxService;
 import org.springframework.stereotype.Controller;

@@ -1,13 +1,19 @@
 package com.greenfox.programmingfoxclub.service;
 
-import com.greenfox.programmingfoxclub.model.Drink;
-import com.greenfox.programmingfoxclub.model.Food;
+import com.greenfox.programmingfoxclub.model.history.TrickAction;
+import com.greenfox.programmingfoxclub.model.nutrient.Drink;
+import com.greenfox.programmingfoxclub.model.nutrient.Food;
 import com.greenfox.programmingfoxclub.model.Fox;
+import com.greenfox.programmingfoxclub.model.history.HistoryAction;
 import com.greenfox.programmingfoxclub.model.Trick;
+import com.greenfox.programmingfoxclub.model.history.NutrientAction;
+import com.greenfox.programmingfoxclub.model.nutrient.Nutrient;
 import com.greenfox.programmingfoxclub.repositary.DrinkRepo;
 import com.greenfox.programmingfoxclub.repositary.FoodRepo;
 import com.greenfox.programmingfoxclub.repositary.FoxRepo;
+import com.greenfox.programmingfoxclub.repositary.HistoryActionRepo;
 import com.greenfox.programmingfoxclub.repositary.TrickRepo;
+import java.util.Comparator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,13 +27,16 @@ public class FoxService {
   TrickRepo trickRepo;
   FoodRepo foodRepo;
   DrinkRepo drinkRepo;
+  HistoryActionRepo historyActionRepo;
 
-  public FoxService(FoxRepo foxRepo, TrickRepo trickRepo, FoodRepo foodRepo,
-                    DrinkRepo drinkRepo) {
+  public FoxService(FoxRepo foxRepo, TrickRepo trickRepo,
+                    FoodRepo foodRepo, DrinkRepo drinkRepo,
+                    HistoryActionRepo historyActionRepo) {
     this.foxRepo = foxRepo;
     this.trickRepo = trickRepo;
     this.foodRepo = foodRepo;
     this.drinkRepo = drinkRepo;
+    this.historyActionRepo = historyActionRepo;
   }
 
   public List<Trick> tricksToLearn(String name) {
@@ -36,12 +45,12 @@ public class FoxService {
     }
     return trickRepo.findAll().stream()
         .filter(trick -> getByName(name).getTricks().stream()
-                            .noneMatch(learnedTrick -> learnedTrick == trick))
+            .noneMatch(learnedTrick -> learnedTrick == trick))
         .collect(Collectors.toList());
   }
 
   public Fox getByName(String foxName) {
-      return foxRepo.getFoxByName(foxName);
+    return foxRepo.getFoxByName(foxName);
   }
 
   public void creatByName(String newFoxName) {
@@ -59,6 +68,7 @@ public class FoxService {
     List<Trick> tricks = fox.getTricks();
     tricks.add(newTrick);
     fox.setTricks(tricks);
+    loqTrickAction(fox, newTrick);
     foxRepo.save(fox);
   }
 
@@ -72,13 +82,51 @@ public class FoxService {
 
   public void setNutrients(String foxName, Food food, Drink drink) {
     Fox foxToEdit = getByName(foxName);
+
+    logFoodChange(foxToEdit, food);
+    logDrinkChange(foxToEdit, drink);
+
     foxToEdit.setFood(food);
     foxToEdit.setDrink(drink);
+
     foxRepo.save(foxToEdit);
+  }
+
+  public List<HistoryAction> getSortedActionHistory(String foxName) {
+    List<HistoryAction> historyActions = getByName(foxName).getHistoryActions();
+    historyActions.sort(Comparator.comparing(HistoryAction::getDate).reversed());
+    return historyActions;
   }
 
   private void setDefaultNutrients(Fox fox) {
     fox.setDrink(drinkRepo.findAll().get(0));
     fox.setFood(foodRepo.findAll().get(0));
   }
+
+  private void logFoodChange(Fox fox, Food newFood) {
+    Food oldFood = fox.getFood();
+    if (oldFood != newFood) {
+      loqNutrientAction(fox, newFood, oldFood);
+    }
+  }
+
+  private void logDrinkChange(Fox fox, Drink newDrink) {
+    Drink oldDrink = fox.getDrink();
+    if (oldDrink != newDrink) {
+      loqNutrientAction(fox, newDrink, oldDrink);
+    }
+  }
+
+  private void loqNutrientAction(Fox fox, Nutrient newNutrient, Nutrient oldNutrient) {
+    HistoryAction newHistoryAction = new NutrientAction(oldNutrient, newNutrient);
+    newHistoryAction.setFox(fox);
+    historyActionRepo.save(newHistoryAction);
+  }
+
+  private void loqTrickAction(Fox fox, Trick trickToLog) {
+    HistoryAction newHistoryAction = new TrickAction(trickToLog);
+    newHistoryAction.setFox(fox);
+    historyActionRepo.save(newHistoryAction);
+  }
 }
+

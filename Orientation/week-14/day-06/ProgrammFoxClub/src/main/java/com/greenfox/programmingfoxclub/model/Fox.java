@@ -1,6 +1,8 @@
 package com.greenfox.programmingfoxclub.model;
 
-import java.util.ArrayList;
+import com.greenfox.programmingfoxclub.model.history.HistoryAction;
+import com.greenfox.programmingfoxclub.model.nutrient.Drink;
+import com.greenfox.programmingfoxclub.model.nutrient.Food;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -33,7 +35,7 @@ public class Fox {
   private Drink drink;
   @ManyToMany
   private List<Trick> tricks;
-  @OneToMany(mappedBy = "fox", cascade = CascadeType.PERSIST,orphanRemoval = true)
+  @OneToMany(mappedBy = "fox", cascade = CascadeType.PERSIST, orphanRemoval = true)
   private List<HistoryAction> historyActions;
 
   public Fox() {}

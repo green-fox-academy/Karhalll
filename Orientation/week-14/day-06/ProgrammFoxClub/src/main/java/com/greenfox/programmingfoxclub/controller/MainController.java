@@ -65,6 +65,7 @@ public class MainController {
   @GetMapping("/actionHistory")
   public String actionHistory(@RequestParam String name, Model model) {
     model.addAttribute("fox", foxService.getByName(name));
+    model.addAttribute("historyActions", foxService.getSortedActionHistory(name));
     return checkFoxAndLoadPage("action-history", name);
   }
 

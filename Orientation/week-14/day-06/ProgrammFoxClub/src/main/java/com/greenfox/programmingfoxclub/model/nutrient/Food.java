@@ -1,5 +1,6 @@
-package com.greenfox.programmingfoxclub.model;
+package com.greenfox.programmingfoxclub.model.nutrient;
 
+import com.greenfox.programmingfoxclub.model.Fox;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,19 +11,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "drinks")
-public class Drink implements Nutrient {
+@Table(name = "foods")
+public class Food implements Nutrient {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
 
-  @OneToMany(mappedBy = "drink", cascade = CascadeType.PERSIST)
+  @OneToMany(mappedBy = "food", cascade = CascadeType.PERSIST)
   private List<Fox> fox;
 
-  public Drink() {}
+  public Food() {}
 
-  public Drink(String name) {
+  public Food(String name) {
     this.name = name;
   }
 
