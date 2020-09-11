@@ -19,6 +19,7 @@ public class MainController {
   @GetMapping("/")
   public String index(@RequestParam String name, Model model) {
     model.addAttribute("fox", foxService.getByName(name));
+    model.addAttribute("actions", foxService.getFirst5SortedActionHistory(name));
     return checkFoxAndLoadPage("information", name);
   }
 

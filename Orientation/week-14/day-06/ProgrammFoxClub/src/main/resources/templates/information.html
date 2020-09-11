@@ -21,11 +21,11 @@
         <li th:each="trick : ${fox.getTricks()}" th:text="${trick.name}">
     </div>
 
-<!--    <h1>Action history</h1>-->
+    <h1>Action history</h1>
 
-<!--    <p th:each="log : ${fox.getChangeLog().getLastNActions(5)}">-->
-<!--    <li th:text="${log.toString()}"></li>-->
-<!--    </p>-->
+    <p th:each="action : ${actions}">
+    <li th:text="${action.toString()}"></li>
+    </p>
 
 </body>
 </html>

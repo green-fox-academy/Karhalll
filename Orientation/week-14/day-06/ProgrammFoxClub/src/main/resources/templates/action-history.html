@@ -8,7 +8,7 @@
 <body>
     <nav th:replace="navigation-bar :: nav-bar"></nav>
 
-    <p th:each="historyAction : ${historyActions}">
+    <p th:each="historyAction : ${last5Action}">
         <li th:text="${historyAction.toString()}"></li>
     </p>
 

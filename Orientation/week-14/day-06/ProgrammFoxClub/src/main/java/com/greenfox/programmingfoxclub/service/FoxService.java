@@ -98,6 +98,11 @@ public class FoxService {
     return historyActions;
   }
 
+  public List<HistoryAction> getFirst5SortedActionHistory(String foxName) {
+    List<HistoryAction> first5Actions = historyActionRepo.findTop5ByFoxNameOrderByDateDesc(foxName);
+    return first5Actions;
+  }
+
   private void setDefaultNutrients(Fox fox) {
     fox.setDrink(drinkRepo.findAll().get(0));
     fox.setFood(foodRepo.findAll().get(0));
