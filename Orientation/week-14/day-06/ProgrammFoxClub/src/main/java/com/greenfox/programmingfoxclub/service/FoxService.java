@@ -13,6 +13,7 @@ import com.greenfox.programmingfoxclub.repositary.FoodRepo;
 import com.greenfox.programmingfoxclub.repositary.FoxRepo;
 import com.greenfox.programmingfoxclub.repositary.HistoryActionRepo;
 import com.greenfox.programmingfoxclub.repositary.TrickRepo;
+import com.greenfox.programmingfoxclub.repositary.UserRepo;
 import java.util.Comparator;
 import org.springframework.stereotype.Service;
 
@@ -28,19 +29,22 @@ public class FoxService {
   FoodRepo foodRepo;
   DrinkRepo drinkRepo;
   HistoryActionRepo historyActionRepo;
+  UserRepo userRepo;
 
   public FoxService(FoxRepo foxRepo, TrickRepo trickRepo,
                     FoodRepo foodRepo, DrinkRepo drinkRepo,
-                    HistoryActionRepo historyActionRepo) {
+                    HistoryActionRepo historyActionRepo,
+                    UserRepo userRepo) {
     this.foxRepo = foxRepo;
     this.trickRepo = trickRepo;
     this.foodRepo = foodRepo;
     this.drinkRepo = drinkRepo;
     this.historyActionRepo = historyActionRepo;
+    this.userRepo = userRepo;
   }
 
-  public List<Trick> tricksToLearn(String name) {
-    if (!isFox(name)) {
+  public List<Trick> tricksToLearn(String name, String username) {
+    if (!isFox(name, username)) {
       return null;
     }
     return trickRepo.findAll().stream()
@@ -53,14 +57,16 @@ public class FoxService {
     return foxRepo.getFoxByName(foxName);
   }
 
-  public void creatByName(String newFoxName) {
+  public void creatByName(String newFoxName, String username) {
     Fox foxToCreate = new Fox(newFoxName);
     setDefaultNutrients(foxToCreate);
+    foxToCreate.setUser(userRepo.findFirstByUsername(username));
     foxRepo.save(foxToCreate);
   }
 
-  public boolean isFox(String foxName) {
-    return getByName(foxName) != null;
+  public boolean isFox(String foxName, String username) {
+    Fox fox = getByName(foxName);
+    return fox != null && fox.getUser().getId() == userRepo.findFirstByUsername(username).getId();
   }
 
   public void learnTrick(String foxName, Trick newTrick) {

@@ -9,7 +9,7 @@
     <nav th:replace="navigation-bar :: nav-bar"></nav>
 
     <p></p>
-    <form th:if="${tricksToLearn.size() > 0}" th:action="'/trickCenter?name=' + ${fox.getName()}" method="post">
+    <form th:if="${tricksToLearn.size() > 0}" th:action="'./trickCenter?name=' + ${fox.getName()}" method="post">
         <label>Tricks</label>
         <select name="trick">
 

@@ -9,7 +9,7 @@
     <nav th:replace="navigation-bar :: nav-bar"></nav>
 
     <p></p>
-    <form th:action="'/nutritionStore?name=' + ${fox.getName()}" method="post">
+    <form th:action="'./nutritionStore?name=' + ${fox.getName()}" method="post">
         <label>Food</label>
         <select name = "food">
             <option

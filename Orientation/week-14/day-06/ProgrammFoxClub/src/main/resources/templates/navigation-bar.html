@@ -8,16 +8,16 @@
 <body>
     <nav th:fragment="nav-bar">
         <li>
-            <a th:href="'/?name=' + ${fox.getName()}">Information</a>
+            <a th:href="'./?name=' + ${fox.getName()}">Information</a>
         </li>
         <li>
-            <a th:href="'/nutritionStore?name=' + ${fox.getName()}">Nutrition Store</a>
+            <a th:href="'./nutritionStore?name=' + ${fox.getName()}">Nutrition Store</a>
         </li>
         <li>
-            <a th:href="'/trickCenter?name=' + ${fox.getName()}">Trick Center</a>
+            <a th:href="'./trickCenter?name=' + ${fox.getName()}">Trick Center</a>
         </li>
         <li>
-            <a th:href="'/actionHistory?name=' + ${fox.getName()}">Action History</a>
+            <a th:href="'./actionHistory?name=' + ${fox.getName()}">Action History</a>
         </li>
     </nav>
 </body>
