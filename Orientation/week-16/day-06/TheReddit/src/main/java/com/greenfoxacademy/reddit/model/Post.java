@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "posts")
@@ -18,7 +19,7 @@ public class Post {
   private long id;
   private String title;
   private String url;
-  private int score = 0;
+  private int score;
   @Temporal(value = TemporalType.DATE)
   private Date creationDate;
 

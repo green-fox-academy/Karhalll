@@ -7,7 +7,9 @@
     <title>The Reddit</title>
 </head>
 <body>
-    <a href="/submit">Submit new post</a>
+    <form th:action="@{/submit}" method="get">
+        <button type="submit" class="link-button">Submit new post</button>
+    </form>
 
     <h1>Trending Posts</h1>
     <table>
@@ -24,7 +26,11 @@
                 </form>
             </td>
             <td th:text="*{creationDate}"></td>
-            <td><a th:href="*{url}" th:text="*{title}"></a></td>
+            <td>
+                <form th:action="*{url}" method="get">
+                    <button type="submit" th:text="*{title}" class="link-button"></button>
+                </form>
+            </td>
         </tr>
     </table>
 </body>

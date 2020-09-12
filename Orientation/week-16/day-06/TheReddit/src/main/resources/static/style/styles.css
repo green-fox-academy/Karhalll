@@ -3,9 +3,9 @@
     border: none;
     padding: 0!important;
     /*optional*/
-    font-family: arial, sans-serif;
+    font-family: "Times New Roman", sans-serif;
     /*input has OS specific font-family*/
-    color: #069;
+    color: #640ff2;
     text-decoration: underline;
     cursor: pointer;
 }
