@@ -20,9 +20,11 @@ public class RedditController {
 
   @GetMapping({"", "/", "/{page}"})
   public String showTrendingPosts(@PathVariable(required = false) Integer page, Model model) {
-    model.addAttribute("posts", postService.getFirst10SortedByScoreDesc());
-    model.addAttribute("page", page == null ? 0 : page);
-    model.addAttribute("pagesCount", postService.postsPages());
+    if (page == null) page = 0;
+
+    model.addAttribute("posts", postService.getNPageOf10SortedByScoreDesc(page));
+    model.addAttribute("page", page);
+    model.addAttribute("pagesCount", postService.pagesOf10Count());
     return "trending-posts";
   }
 
@@ -37,9 +39,9 @@ public class RedditController {
     return "redirect:/";
   }
 
-  @PostMapping("/vote/{id}")
-  public String voteForPost(@PathVariable Long id, Integer vote) {
+  @PostMapping("/{page}/vote/{id}")
+  public String voteForPost(@PathVariable Integer page, @PathVariable Long id, Integer vote) {
     postService.addScore(id, vote);
-    return "redirect:/";
+    return "redirect:/" + page;
   }
 }

@@ -16,20 +16,18 @@
         <tr th:each="post : ${posts}" th:object="${post}">
             <td th:text="*{score}"></td>
             <td>
-                <form th:action="@{|/vote/${post.id}}" method="post">
+                <form th:action="@{|/${page}/vote/${post.id}|}" method="post">
                     <button type="submit" name="vote" value="1" class="link-button">+</button>
                 </form>
             </td>
             <td>
-                <form th:action="@{|/vote/${post.id}}" method="post">
+                <form th:action="@{|/${page}/vote/${post.id}|}" method="post">
                     <button type="submit" name="vote" value="-1" class="link-button">-</button>
                 </form>
             </td>
             <td th:text="*{creationDate}"></td>
             <td>
-                <form th:action="*{url}" method="get">
-                    <button type="submit" th:text="*{title}" class="link-button"></button>
-                </form>
+                <a th:href="*{url}" th:text="*{title}" target="_blank"></a>
             </td>
         </tr>
     </table>

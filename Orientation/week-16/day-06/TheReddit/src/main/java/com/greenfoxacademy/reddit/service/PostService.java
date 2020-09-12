@@ -5,8 +5,7 @@ import java.util.List;
 
 public interface PostService {
   void create(String title, String url);
-  int postsPages();
-  List<Post> getFirst10SortedByScoreDesc();
+  int pagesOf10Count();
   List<Post> getNPageOf10SortedByScoreDesc(Integer page);
   void addScore(Long id, Integer scoreToAdd);
 }

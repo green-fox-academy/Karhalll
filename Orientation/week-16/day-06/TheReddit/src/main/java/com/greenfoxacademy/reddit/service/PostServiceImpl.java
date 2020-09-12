@@ -23,13 +23,8 @@ public class PostServiceImpl implements PostService {
   }
 
   @Override
-  public int postsPages() {
+  public int pagesOf10Count() {
     return ((int)postRepository.count()/10);
-  }
-
-  @Override
-  public List<Post> getFirst10SortedByScoreDesc() {
-    return postRepository.getAllByOrderByScoreDesc(PageRequest.of(0, 10));
   }
 
   @Override
