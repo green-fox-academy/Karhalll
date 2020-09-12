@@ -1,32 +1,32 @@
 package com.greenfoxacademy.reddit.service;
 
 import com.greenfoxacademy.reddit.model.User;
-import com.greenfoxacademy.reddit.repository.UserRepo;
+import com.greenfoxacademy.reddit.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-  private final UserRepo userRepo;
+  private final UserRepository userRepository;
 
   @Autowired
-  public UserServiceImpl(UserRepo userRepo) {
-    this.userRepo = userRepo;
+  public UserServiceImpl(UserRepository userRepository) {
+    this.userRepository = userRepository;
   }
 
   @Override
   public boolean isAlreadyUser(String username) {
-    return userRepo.findFirstByUsername(username) != null;
+    return userRepository.findFirstByUsername(username) != null;
   }
 
   @Override
   public void registerUser(String username, String password) {
-    userRepo.save(new User(username, password));
+    userRepository.save(new User(username, password));
   }
 
   @Override
   public boolean validLogIn(String username, String password) {
-    return userRepo.findFirstByUsername(username).getPassword().equals(password);
+    return userRepository.findFirstByUsername(username).getPassword().equals(password);
   }
 }

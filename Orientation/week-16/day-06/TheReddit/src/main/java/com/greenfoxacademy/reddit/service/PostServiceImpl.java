@@ -2,6 +2,7 @@ package com.greenfoxacademy.reddit.service;
 
 import com.greenfoxacademy.reddit.model.Post;
 import com.greenfoxacademy.reddit.repository.PostRepository;
+import com.greenfoxacademy.reddit.repository.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -11,15 +12,20 @@ import org.springframework.stereotype.Service;
 public class PostServiceImpl implements PostService {
 
   private final PostRepository postRepository;
+  private final UserRepository userRepository;
 
   @Autowired
-  public PostServiceImpl(PostRepository postRepository) {
+  public PostServiceImpl(PostRepository postRepository,
+                         UserRepository userRepository) {
     this.postRepository = postRepository;
+    this.userRepository = userRepository;
   }
 
   @Override
-  public void create(String title, String url) {
-    postRepository.save(new Post(title, url));
+  public void create(String title, String url, String username) {
+    Post postToStore = new Post(title, url);
+    postToStore.setUser(userRepository.findFirstByUsername(username));
+    postRepository.save(postToStore);
   }
 
   @Override

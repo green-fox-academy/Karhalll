@@ -40,7 +40,7 @@ public class RedditController {
 
   @PostMapping("/submit")
   public String submitNewPost(@PathVariable String username, String title, String url) {
-    postService.create(title, url);
+    postService.create(title, url, username);
     return checkUserAndLoadPage("redirect:/" + username + "/", username);
   }
 
