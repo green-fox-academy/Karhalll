@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+</head>
+<body>
+<h1>Welcome to new and better Reddit</h1>
+
+<p th:if="${error} != null" th:style="'color: red;'" th:text="${error}"></p>
+<p th:unless="${error != null}">Please log in with existing account!</p>
+
+<form action="/login" method="post">
+    <label>Username: </label>
+    <input type="text" name="username">
+    <label>Password: </label>
+    <input type="password" name="password">
+    <input type="submit" name="submit" value="LOG IN">
+</form>
+
+<p></p>
+<a href="/register">Register new user</a>
+</body>
+</html>

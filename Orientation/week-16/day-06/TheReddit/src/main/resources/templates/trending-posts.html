@@ -3,25 +3,23 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/style/styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <title>The Reddit</title>
 </head>
 <body>
-    <form th:action="@{/submit}" method="get">
-        <button type="submit" class="link-button">Submit new post</button>
-    </form>
+        <a th:href="'./submit'">Submit new post</a>
 
     <h1>Trending Posts</h1>
     <table>
         <tr th:each="post : ${posts}" th:object="${post}">
             <td th:text="*{score}"></td>
             <td>
-                <form th:action="@{|/${page}/vote/${post.id}|}" method="post">
+                <form th:action="@{'./' + ${page} + '/vote/' + ${post.id}}" method="post">
                     <button type="submit" name="vote" value="1" class="link-button">+</button>
                 </form>
             </td>
             <td>
-                <form th:action="@{|/${page}/vote/${post.id}|}" method="post">
+                <form th:action="@{|./${page}/vote/${post.id}|}" method="post">
                     <button type="submit" name="vote" value="-1" class="link-button">-</button>
                 </form>
             </td>
