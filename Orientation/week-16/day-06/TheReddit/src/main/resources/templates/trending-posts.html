@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/styles.css">
     <title>The Reddit</title>
 </head>
 <body>
@@ -12,8 +13,17 @@
     <table>
         <tr th:each="post : ${posts}" th:object="${post}">
             <td th:text="*{score}"></td>
-            <td><a th:href="@{|/vote/${post.id}/1|}">+</a></td>
-            <td><a th:href="@{|/vote/${post.id}/-1|}">-</a></td>
+            <td>
+                <form th:action="@{|/vote/${post.id}}" method="post">
+                    <button type="submit" name="vote" value="1" class="link-button">+</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{|/vote/${post.id}}" method="post">
+                    <button type="submit" name="vote" value="-1" class="link-button">-</button>
+                </form>
+            </td>
+            <td th:text="*{creationDate}"></td>
             <td><a th:href="*{url}" th:text="*{title}"></a></td>
         </tr>
     </table>

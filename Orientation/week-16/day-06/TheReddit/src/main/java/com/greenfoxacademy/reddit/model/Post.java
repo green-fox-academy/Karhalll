@@ -1,10 +1,13 @@
 package com.greenfoxacademy.reddit.model;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "posts")
@@ -16,6 +19,8 @@ public class Post {
   private String title;
   private String url;
   private int score = 0;
+  @Temporal(value = TemporalType.DATE)
+  private Date creationDate;
 
   public Post() {
   }
@@ -23,6 +28,7 @@ public class Post {
   public Post(String title, String url) {
     this.title = title;
     this.url = url;
+    this.creationDate = new Date();
   }
 
   public long getId() {
@@ -55,5 +61,13 @@ public class Post {
 
   public void setScore(int score) {
     this.score = score;
+  }
+
+  public Date getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(Date creationDate) {
+    this.creationDate = creationDate;
   }
 }

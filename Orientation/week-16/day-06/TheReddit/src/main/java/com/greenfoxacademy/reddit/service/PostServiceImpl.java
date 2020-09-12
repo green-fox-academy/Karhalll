@@ -1,38 +1,35 @@
 package com.greenfoxacademy.reddit.service;
 
 import com.greenfoxacademy.reddit.model.Post;
-import com.greenfoxacademy.reddit.repository.PostRepo;
+import com.greenfoxacademy.reddit.repository.PostRepository;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PostServiceImpl implements PostService {
 
-  PostRepo postRepo;
+  private final PostRepository postRepository;
 
-  public PostServiceImpl(PostRepo postRepo) {
-    this.postRepo = postRepo;
-  }
-
-  @Override
-  public void create(Post newPost) {
-    postRepo.save(newPost);
+  @Autowired
+  public PostServiceImpl(PostRepository postRepository) {
+    this.postRepository = postRepository;
   }
 
   @Override
   public void create(String title, String url) {
-    create(new Post(title, url));
+    postRepository.save(new Post(title, url));
   }
 
   @Override
   public List<Post> getAllSortedByScoreDesc() {
-    return postRepo.getAllByOrderByScoreDesc();
+    return postRepository.getAllByOrderByScoreDesc();
   }
 
   @Override
   public void addScore(Long id, Integer scoreToAdd) {
-    Post postToChange = postRepo.getOne(id);
+    Post postToChange = postRepository.getOne(id);
     postToChange.setScore(postToChange.getScore() + scoreToAdd);
-    postRepo.save(postToChange);
+    postRepository.save(postToChange);
   }
 }
