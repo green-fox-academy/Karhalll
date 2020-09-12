@@ -1,6 +1,7 @@
 package com.greenfoxacademy.reddit.controller;
 
 import com.greenfoxacademy.reddit.service.PostService;
+import javax.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,17 @@ public class RedditController {
 
   @GetMapping({"", "/"})
   public String showTrendingPosts(Model model) {
-    model.addAttribute("posts", postService.getAllSortedByScoreDesc());
+    model.addAttribute("posts", postService.getFirst10SortedByScoreDesc());
+    model.addAttribute("page", 0);
+    model.addAttribute("pagesCount", postService.postsPages());
+    return "trending-posts";
+  }
+
+  @GetMapping("/{page}")
+  public String showNPostsPage(@PathVariable Integer page, Model model) {
+    model.addAttribute("posts", postService.getNPageOf10SortedByScoreDesc(page));
+    model.addAttribute("page", page);
+    model.addAttribute("pagesCount", postService.postsPages());
     return "trending-posts";
   }
 

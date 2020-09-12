@@ -4,6 +4,7 @@ import com.greenfoxacademy.reddit.model.Post;
 import com.greenfoxacademy.reddit.repository.PostRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,8 +23,18 @@ public class PostServiceImpl implements PostService {
   }
 
   @Override
-  public List<Post> getAllSortedByScoreDesc() {
-    return postRepository.getAllByOrderByScoreDesc();
+  public int postsPages() {
+    return ((int)postRepository.count()/10);
+  }
+
+  @Override
+  public List<Post> getFirst10SortedByScoreDesc() {
+    return postRepository.getAllByOrderByScoreDesc(PageRequest.of(0, 10));
+  }
+
+  @Override
+  public List<Post> getNPageOf10SortedByScoreDesc(Integer page) {
+    return postRepository.getAllByOrderByScoreDesc(PageRequest.of(page,10));
   }
 
   @Override

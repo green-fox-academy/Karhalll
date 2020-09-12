@@ -33,5 +33,10 @@
             </td>
         </tr>
     </table>
+
+    <div class="pagination">
+        <a th:if="${page - 1 >= 0}" th:href="'./' + ${page - 1}"><- Previous</a>
+        <a th:if="${page + 1 <= pagesCount}" th:href="'./' + ${page + 1}">Next -></a>
+    </div>
 </body>
 </html>
