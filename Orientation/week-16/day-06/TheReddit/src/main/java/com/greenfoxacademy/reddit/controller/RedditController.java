@@ -45,8 +45,8 @@ public class RedditController {
   }
 
   @PostMapping("/{page}/rate/{postId}")
-  public String voteForPost(@PathVariable String username, @PathVariable Integer page, @PathVariable Long postId, Integer vote) {
-    postService.ratePostAsUser(vote, postId, username);
+  public String ratePost(@PathVariable String username, @PathVariable Integer page, @PathVariable Long postId, Integer rating) {
+    postService.ratePostAsUser(rating, postId, username);
     return checkUserAndLoadPage("redirect:/"+ username + "/" + page, username);
   }
 

@@ -15,12 +15,12 @@
             <td th:text="*{score}"></td>
             <td>
                 <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
-                    <button type="submit" name="vote" value="1" class="link-button">+</button>
+                    <button type="submit" name="rating" value="1" class="link-button">+</button>
                 </form>
             </td>
             <td>
                 <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
-                    <button type="submit" name="vote" value="-1" class="link-button">-</button>
+                    <button type="submit" name="rating" value="-1" class="link-button">-</button>
                 </form>
             </td>
             <td th:text="*{creationDate}"></td>
