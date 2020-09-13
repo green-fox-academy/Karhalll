@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PostService {
   void create(String title, String url, String username);
-  int pagesOf10Count();
+  int pagesOf10Posts();
   List<Post> getNPageOf10SortedByScoreDesc(Integer page);
   void ratePostAsUser(Integer rating, Long postId, String username);
 }

@@ -34,7 +34,7 @@ public class PostServiceImpl implements PostService {
   }
 
   @Override
-  public int pagesOf10Count() {
+  public int pagesOf10Posts() {
     return ((int)postRepository.count()/10);
   }
 
@@ -46,14 +46,14 @@ public class PostServiceImpl implements PostService {
   @Override
   public void ratePostAsUser(Integer userRating, Long postId, String username) {
     Post post = postRepository.getOne(postId);
-    Rating ratingToRate = changeOrCreatRating(userRating, post, username);
+    Rating ratingToRate = changeOrCreateRating(userRating, post, username);
 
     post.setScore(post.getScore() + ratingToRate.getRating());
 
     ratingRepository.save(ratingToRate);
   }
 
-  private Rating changeOrCreatRating(Integer userRating, Post post, String username) {
+  private Rating changeOrCreateRating(Integer userRating, Post post, String username) {
     Rating ratingToRate =  ratingRepository.findByPostAndUserUsername(post, username);
 
     if (ratingToRate == null) {

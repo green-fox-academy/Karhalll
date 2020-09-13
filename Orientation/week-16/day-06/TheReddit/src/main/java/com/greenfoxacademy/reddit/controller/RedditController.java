@@ -29,7 +29,7 @@ public class RedditController {
 
     model.addAttribute("posts", postService.getNPageOf10SortedByScoreDesc(page));
     model.addAttribute("page", page);
-    model.addAttribute("pagesCount", postService.pagesOf10Count());
+    model.addAttribute("pagesCount", postService.pagesOf10Posts());
     return checkUserAndLoadPage("trending-posts", username);
   }
 
