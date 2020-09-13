@@ -1,12 +1,15 @@
 package com.greenfoxacademy.reddit.model;
 
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,6 +30,8 @@ public class Post {
   @ManyToOne
   @JoinColumn
   private User user;
+  @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
+  private List<Rating> ratings;
 
   public Post() {
   }
@@ -83,5 +88,13 @@ public class Post {
 
   public void setUser(User user) {
     this.user = user;
+  }
+
+  public List<Rating> getRatings() {
+    return ratings;
+  }
+
+  public void setRatings(List<Rating> ratings) {
+    this.ratings = ratings;
   }
 }

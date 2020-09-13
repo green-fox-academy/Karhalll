@@ -7,19 +7,19 @@
     <title>The Reddit</title>
 </head>
 <body>
-        <a th:href="'./submit'">Submit new post</a>
+    <a th:href="'./submit'">Submit new post</a>
 
     <h1>Trending Posts</h1>
     <table>
         <tr th:each="post : ${posts}" th:object="${post}">
             <td th:text="*{score}"></td>
             <td>
-                <form th:action="@{'./' + ${page} + '/vote/' + ${post.id}}" method="post">
+                <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
                     <button type="submit" name="vote" value="1" class="link-button">+</button>
                 </form>
             </td>
             <td>
-                <form th:action="@{|./${page}/vote/${post.id}|}" method="post">
+                <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
                     <button type="submit" name="vote" value="-1" class="link-button">-</button>
                 </form>
             </td>

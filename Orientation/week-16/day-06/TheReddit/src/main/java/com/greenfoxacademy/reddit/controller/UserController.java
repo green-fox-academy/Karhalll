@@ -30,7 +30,7 @@ public class UserController {
     } else if (password.isEmpty()) {
       return "redirect:/login?error=Please provide some password!";
     } else if (userService.validLogIn(username, password)) {
-      return "redirect:/" + username;
+      return "redirect:/" + username + "/";
     } else {
       return "redirect:/login?error=Invalid password!";
     }
