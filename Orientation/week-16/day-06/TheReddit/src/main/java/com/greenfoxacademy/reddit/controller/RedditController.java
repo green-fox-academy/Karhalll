@@ -24,7 +24,8 @@ public class RedditController {
   }
 
   @GetMapping({"/", "/{page}"})
-  public String showTrendingPosts(@PathVariable String username, @PathVariable(required = false) Integer page, Model model) {
+  public String showTrendingPosts(@PathVariable String username,
+                                  @PathVariable(required = false) Integer page, Model model) {
     if (page == null) page = 0;
 
     model.addAttribute("posts", postService.getNPageOf10SortedByScoreDesc(page));
@@ -45,7 +46,8 @@ public class RedditController {
   }
 
   @PostMapping("/{page}/rate/{postId}")
-  public String ratePost(@PathVariable String username, @PathVariable Integer page, @PathVariable Long postId, Integer rating) {
+  public String ratePost(@PathVariable String username, @PathVariable Integer page,
+                         @PathVariable Long postId, Integer rating) {
     postService.ratePostAsUser(rating, postId, username);
     return checkUserAndLoadPage("redirect:/"+ username + "/" + page, username);
   }
