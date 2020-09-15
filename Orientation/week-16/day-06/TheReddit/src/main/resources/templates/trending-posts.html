@@ -12,32 +12,32 @@
     <h1>Trending Posts</h1>
 
     <div class="posts">
-            <div class="post" th:each="post : ${posts}" th:object="${post}">
-                    <div class="voting">
-                        <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
-                            <button type="submit" name="rating" value="1" class="link-button">+</button>
-                        </form>
+      <div class="post" th:each="post : ${posts}" th:object="${post}">
+        <div class="voting">
+          <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
+            <button type="submit" name="rating" value="1" class="link-button">+</button>
+          </form>
 
-                        <div class="score" th:text="*{score}"></div>
+          <div class="score" th:text="*{score}"></div>
 
-                        <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
-                            <button type="submit" name="rating" value="-1" class="link-button">-</button>
-                        </form>
+          <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
+            <button type="submit" name="rating" value="-1" class="link-button">-</button>
+          </form>
 
-                    </div>
-                    <div class="post-main">
-                        <div class="date" th:text="|Posted by *{user.username} at *{creationDate}|">
-                        </div>
-                        <div class="title">
-                            <a th:href="*{url}" th:text="*{title}" target="_blank"></a>
-                        </div>
-                    </div>
-            </div>
+        </div>
+        <div class="post-main">
+          <div class="date" th:text="|Posted by *{user.username} at *{creationDate}|">
+          </div>
+          <div class="title">
+            <a th:href="*{url}" th:text="*{title}" target="_blank"></a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="pagination">
-        <a th:if="${page - 1 >= 0}" th:href="'./' + ${page - 1}"><- Previous</a>
-        <a th:if="${page + 1 <= pagesCount}" th:href="'./' + ${page + 1}">Next -></a>
+      <a th:if="${page - 1 >= 0}" th:href="'./' + ${page - 1}"><- Previous</a>
+      <a th:if="${page + 1 <= pagesCount}" th:href="'./' + ${page + 1}">Next -></a>
     </div>
 </body>
 </html>
