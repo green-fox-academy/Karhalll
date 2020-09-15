@@ -15,13 +15,13 @@
       <div class="post" th:each="post : ${posts}" th:object="${post}">
         <div class="voting">
           <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
-            <button type="submit" name="rating" value="1" class="link-button">+</button>
+            <button class="up" type="submit" name="rating" value="1">+</button>
           </form>
 
           <div class="score" th:text="*{score}"></div>
 
           <form th:action="@{|./${page}/rate/${post.id}|}" method="post">
-            <button type="submit" name="rating" value="-1" class="link-button">-</button>
+            <button class="down" type="submit" name="rating" value="-1">-</button>
           </form>
 
         </div>
@@ -36,8 +36,8 @@
     </div>
 
     <div class="pagination">
-      <a th:if="${page - 1 >= 0}" th:href="'./' + ${page - 1}"><- Previous</a>
-      <a th:if="${page + 1 <= pagesCount}" th:href="'./' + ${page + 1}">Next -></a>
+      <a th:if="${page - 1 >= 0}" th:href="'./' + ${page - 1}">Previous</a>
+      <a th:if="${page + 1 <= pagesCount}" th:href="'./' + ${page + 1}">Next</a>
     </div>
 </body>
 </html>
