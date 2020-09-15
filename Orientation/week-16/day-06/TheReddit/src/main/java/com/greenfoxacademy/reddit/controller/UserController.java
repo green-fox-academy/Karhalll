@@ -55,6 +55,6 @@ public class UserController {
     }
 
     userService.registerUser(username, password);
-    return "redirect:/" + username;
+    return "redirect:/" + username + "/";
   }
 }
