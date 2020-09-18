@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -47,14 +49,24 @@ public class MainController {
   }
 
   @GetMapping("/appenda/{appendable}")
+  @ResponseBody
   public ResponseEntity<String> appendA(@PathVariable String appendable) {
     return ResponseEntity.ok()
         .body("{\"appended\": \"" + appendable + "a\"}");
   }
 
   @GetMapping("/appenda/")
-  public ResponseEntity appendAError() {
-    return new ResponseEntity(HttpStatus.NOT_FOUND);
+  public ResponseEntity<HttpStatus> appendAError() {
+    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
 
+  @PostMapping("/dountil/{action}")
+  @ResponseBody
+  public ResponseEntity doActionUntil(@RequestBody Integer until, @PathVariable String action) {
+    return switch (action) {
+      case "sum" -> mainService.doSumUntil(until);
+      case "factor" -> mainService.doFactorUntil(until);
+      default -> new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    };
+  }
 }

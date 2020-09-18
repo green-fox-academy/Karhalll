@@ -2,6 +2,7 @@ package com.greenfoxacademy.backendapi.service;
 
 import com.greenfoxacademy.backendapi.domain.Doubling;
 import com.greenfoxacademy.backendapi.domain.Greeter;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,5 +34,15 @@ public class MainServiceImpl implements MainService {
     } else {
       return new Greeter("Please provide a title!");
     }
+  }
+
+  @Override
+  public ResponseEntity<String> doSumUntil(Integer until) {
+    return null;
+  }
+
+  @Override
+  public ResponseEntity<String> doFactorUntil(Integer until) {
+    return null;
   }
 }
