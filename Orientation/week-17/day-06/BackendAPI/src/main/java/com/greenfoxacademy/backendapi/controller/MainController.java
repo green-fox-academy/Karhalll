@@ -1,8 +1,10 @@
 package com.greenfoxacademy.backendapi.controller;
 
 import com.greenfoxacademy.backendapi.domain.Doubling;
+import com.greenfoxacademy.backendapi.domain.Greeter;
 import com.greenfoxacademy.backendapi.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +33,16 @@ public class MainController {
         .body(mainService.doubling(input));
   }
 
-//  @GetMapping("/greeter")
-//  @ResponseBody
-//  public ResponseEntity<String> greet(@RequestParam String name,) {}
+  @GetMapping("/greeter")
+  @ResponseBody
+  public ResponseEntity<Greeter> greet(@RequestParam(required = false) String name,
+                                       @RequestParam(required = false) String title) {
+    if (name == null || title == null) {
+      return new ResponseEntity<>(mainService.greeter(name, title), HttpStatus.BAD_REQUEST);
+    } else {
+      return ResponseEntity.ok()
+          .body(mainService.greeter(name, title));
+    }
+  }
 
 }
