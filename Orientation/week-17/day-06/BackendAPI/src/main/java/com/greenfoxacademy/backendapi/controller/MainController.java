@@ -31,7 +31,9 @@ public class MainController {
 
   @GetMapping("/doubling")
   @ResponseBody
-  public ResponseEntity<Object> calculateDoubling(@RequestParam(required = false) Integer input) {
+  public ResponseEntity<Object> calculateDoubling(@RequestParam(required = false) Integer input)
+      throws NoSuchMethodException {
+    getClass().getDeclaredMethod("calculateDoubling").getParameters();
     return ResponseEntity.ok()
         .body(mainService.doubling(input));
   }
