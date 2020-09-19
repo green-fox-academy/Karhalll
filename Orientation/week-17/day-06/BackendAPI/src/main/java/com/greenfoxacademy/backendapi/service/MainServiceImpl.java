@@ -1,9 +1,12 @@
 package com.greenfoxacademy.backendapi.service;
 
+import com.greenfoxacademy.backendapi.domain.ArrayAction;
+import com.greenfoxacademy.backendapi.domain.ArrayResult;
 import com.greenfoxacademy.backendapi.domain.Result;
 import com.greenfoxacademy.backendapi.domain.Doubling;
 import com.greenfoxacademy.backendapi.domain.Error;
 import com.greenfoxacademy.backendapi.domain.Greeter;
+import java.util.Arrays;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -46,6 +49,21 @@ public class MainServiceImpl implements MainService {
     }
   }
 
+  @Override
+  public Object handleArrayAction(ArrayAction arrayAction) {
+    if (arrayAction.getWhat() == null || arrayAction.getNumbers() == null) {
+      return new Error("Please provide what to do with the numbers!");
+    } else {
+      Integer[] array = arrayAction.getNumbers();
+      return switch (arrayAction.getWhat()) {
+        case "sum" -> arraySum(array);
+        case "multiply" -> arrayMultiply(array);
+        case "double" -> arrayDouble(array);
+        default -> null;
+      };
+    }
+  }
+
   private Error handleGreetNullPointer(String name, String title) {
     if (name == null && title == null) {
       return new Error("Please provide a name and a title!");
@@ -54,5 +72,17 @@ public class MainServiceImpl implements MainService {
     } else {
       return new Error("Please provide a title!");
     }
+  }
+
+  private Result arraySum(Integer[] array) {
+    return new Result(Arrays.stream(array).reduce(0, Integer::sum));
+  }
+
+  private Result arrayMultiply(Integer[] array) {
+    return new Result(Arrays.stream(array).reduce((a, b) -> a*b).get());
+  }
+
+  private ArrayResult arrayDouble(Integer[] array) {
+    return new ArrayResult(Arrays.stream(array).map(num -> num*2).toArray(Integer[]::new));
   }
 }

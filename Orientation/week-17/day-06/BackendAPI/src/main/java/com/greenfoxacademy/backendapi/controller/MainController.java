@@ -1,5 +1,6 @@
 package com.greenfoxacademy.backendapi.controller;
 
+import com.greenfoxacademy.backendapi.domain.ArrayAction;
 import com.greenfoxacademy.backendapi.domain.Until;
 import com.greenfoxacademy.backendapi.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,12 @@ public class MainController {
   public ResponseEntity<Object> doActionUntil(@RequestBody(required = false) Until until, @PathVariable String action) {
     return ResponseEntity.ok()
         .body(mainService.doUntil(until.getUntil(), action));
+  }
+
+  @PostMapping("/arrays")
+  @ResponseBody
+  public ResponseEntity<Object> handleArrayAction(@RequestBody ArrayAction arrayAction) {
+    return ResponseEntity.ok()
+        .body(mainService.handleArrayAction(arrayAction));
   }
 }
