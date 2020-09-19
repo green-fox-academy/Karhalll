@@ -1,7 +1,10 @@
 package com.greenfoxacademy.backendapi.service;
 
+import com.greenfoxacademy.backendapi.domain.Result;
 import com.greenfoxacademy.backendapi.domain.Doubling;
+import com.greenfoxacademy.backendapi.domain.Error;
 import com.greenfoxacademy.backendapi.domain.Greeter;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -9,40 +12,47 @@ import org.springframework.stereotype.Service;
 public class MainServiceImpl implements MainService {
 
   @Override
-  public Doubling doubling(Integer integerToDouble) {
+  public Object doubling(Integer integerToDouble) {
     if (integerToDouble == null) {
-      return new Doubling();
+      return new Error("Please provide an input!");
     } else {
       return new Doubling(integerToDouble);
     }
   }
 
   @Override
-  public Greeter greeter(String name, String title) {
-    if (name != null && title != null) {
-      return new Greeter(name, title);
+  public ResponseEntity<Object> greeter(String name, String title) {
+    if (name == null || title == null) {
+      return new ResponseEntity<>(handleGreetNullPointer(name, title), HttpStatus.BAD_REQUEST);
     } else {
-      return handleGreetNullPointer(name, title);
+      return ResponseEntity.ok()
+          .body(new Greeter(name, title));
     }
   }
 
-  private Greeter handleGreetNullPointer(String name, String title) {
+  @Override
+  public Object doUntil(Integer until, String action) {
+    if (until == null) {
+      return new Error("Please provide a number!");
+    } else {
+      int result = action.equals("sum") ? 0 : 1;
+      for (int i = 1; i <= until; i++) {
+        switch (action) {
+          case "sum" -> result += i;
+          case "factor" -> result *= i;
+        }
+      }
+      return new Result(result);
+    }
+  }
+
+  private Error handleGreetNullPointer(String name, String title) {
     if (name == null && title == null) {
-      return new Greeter("Please provide a name and a title!");
+      return new Error("Please provide a name and a title!");
     } else if (name == null) {
-      return new Greeter("Please provide a name!");
+      return new Error("Please provide a name!");
     } else {
-      return new Greeter("Please provide a title!");
+      return new Error("Please provide a title!");
     }
-  }
-
-  @Override
-  public ResponseEntity<String> doSumUntil(Integer until) {
-    return null;
-  }
-
-  @Override
-  public ResponseEntity<String> doFactorUntil(Integer until) {
-    return null;
   }
 }
