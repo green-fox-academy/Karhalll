@@ -1,7 +1,11 @@
 package com.greenfoxacademy.backendapi.service;
 
+import com.greenfoxacademy.backendapi.dto.Entries;
+import com.greenfoxacademy.backendapi.dto.LogDTO;
 import com.greenfoxacademy.backendapi.model.Log;
 import com.greenfoxacademy.backendapi.repository.LogRepo;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +42,16 @@ public class LogServiceImpl implements LogService {
     }
 
     logRepo.save(new Log(endpoint, data));
+  }
 
+  @Override
+  public Entries entries() {
+    List<Log> logs = logRepo.findAll();
+
+    List<LogDTO> logsDTO = logs.stream()
+        .map(log -> new LogDTO(log.getId(), log.getEndpoint(), log.getData()))
+        .collect(Collectors.toList());
+
+    return new Entries(logsDTO);
   }
 }

@@ -1,6 +1,6 @@
 package com.greenfoxacademy.backendapi.service;
 
-import com.greenfoxacademy.backendapi.domain.ArrayAction;
+import com.greenfoxacademy.backendapi.dto.ArrayAction;
 import org.springframework.http.ResponseEntity;
 
 public interface MainService {

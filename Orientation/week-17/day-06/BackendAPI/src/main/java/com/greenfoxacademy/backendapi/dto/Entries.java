@@ -1,6 +1,7 @@
-package com.greenfoxacademy.backendapi.domain;
+package com.greenfoxacademy.backendapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.greenfoxacademy.backendapi.dto.LogDTO;
 import java.util.List;
 
 public class Entries {

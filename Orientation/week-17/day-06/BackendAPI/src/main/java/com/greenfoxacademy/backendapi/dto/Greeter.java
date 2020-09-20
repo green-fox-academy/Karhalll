@@ -1,4 +1,4 @@
-package com.greenfoxacademy.backendapi.domain;
+package com.greenfoxacademy.backendapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

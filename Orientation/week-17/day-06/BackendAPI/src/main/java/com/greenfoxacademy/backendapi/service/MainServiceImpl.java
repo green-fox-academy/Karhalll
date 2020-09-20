@@ -1,11 +1,11 @@
 package com.greenfoxacademy.backendapi.service;
 
-import com.greenfoxacademy.backendapi.domain.ArrayAction;
-import com.greenfoxacademy.backendapi.domain.ArrayResult;
-import com.greenfoxacademy.backendapi.domain.Result;
-import com.greenfoxacademy.backendapi.domain.Doubling;
-import com.greenfoxacademy.backendapi.domain.Error;
-import com.greenfoxacademy.backendapi.domain.Greeter;
+import com.greenfoxacademy.backendapi.dto.ArrayAction;
+import com.greenfoxacademy.backendapi.dto.ArrayResult;
+import com.greenfoxacademy.backendapi.dto.Result;
+import com.greenfoxacademy.backendapi.dto.Doubling;
+import com.greenfoxacademy.backendapi.dto.Error;
+import com.greenfoxacademy.backendapi.dto.Greeter;
 import java.util.Arrays;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

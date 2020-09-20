@@ -1,7 +1,8 @@
 package com.greenfoxacademy.backendapi.controller;
 
-import com.greenfoxacademy.backendapi.domain.ArrayAction;
-import com.greenfoxacademy.backendapi.domain.Until;
+import com.greenfoxacademy.backendapi.dto.ArrayAction;
+import com.greenfoxacademy.backendapi.dto.Entries;
+import com.greenfoxacademy.backendapi.dto.Until;
 import com.greenfoxacademy.backendapi.service.LogService;
 import com.greenfoxacademy.backendapi.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,5 +90,12 @@ public class MainController {
 
     return ResponseEntity.ok()
         .body(mainService.handleArrayAction(arrayAction));
+  }
+
+  @GetMapping("/log")
+  @ResponseBody
+  public ResponseEntity<Entries> sendLogs() {
+    return ResponseEntity.ok()
+        .body(logService.entries());
   }
 }

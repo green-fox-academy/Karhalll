@@ -1,4 +1,4 @@
-package com.greenfoxacademy.backendapi.domain;
+package com.greenfoxacademy.backendapi.dto;
 
 public class Doubling {
 
