@@ -15,3 +15,9 @@
 * Forked [patchwork](https://github.com/Karhalll/patchwork) repo from jlord
 * [mySampleApp](https://github.com/Karhalll/myAppSample "just some test repo")
 
+### Heroku apps:
+Apps are loading slowly at first try (sleeping mode at heroku)
+* [Programmer Fox Club](https://afternoon-wave-34524.herokuapp.com/)
+* [The Reddit](https://morning-castle-78282.herokuapp.com/login)
+* [Todo](https://warm-cove-32422.herokuapp.com/todo/list)
+* [First Heroku app](https://pacific-spire-21317.herokuapp.com/)
