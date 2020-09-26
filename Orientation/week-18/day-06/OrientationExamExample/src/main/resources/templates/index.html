@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>URL aliaser</title>
+</head>
+<body>
+  <p th:if="${error} != ''" style="color: red" th:text="${error}"></p>
+  <div th:if="${aliaser.alias} != null">
+    <p>Your URL is aliased to <span style="font-weight: bold" th:text="${aliaser.alias}"></span> and your secret code is <span style="font-weight: bold" th:text="${aliaser.secretCode}"></span>.</p>
+  </div>
+
+
+  <form action="/save-link" method="post">
+    <label>URL</label><br>
+    <input type="text" name="url" th:value="${url}"><br>
+    <label>Alias</label><br>
+    <input type="text" name="alias" th:value="${alias}"><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
