@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Rascal Chat | Main Channel</title>
+
+  <meta http-equiv="refresh" content="3" >
+</head>
+<body>
+  <h1>Rascal Chat Client</h1>
+
+  <table>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Message</th>
+    </tr>
+    <tr th:each="message : ${messages}" th:object="${message}">
+      <td><img th:src="*{author.avatarUrl}" width="50" height="50"></td>
+      <td th:text="*{author.username}"></td>
+      <td th:text="*{created}"></td>
+      <td th:text="*{content}"></td>
+    </tr>
+  </table>
+</body>
+</html>
