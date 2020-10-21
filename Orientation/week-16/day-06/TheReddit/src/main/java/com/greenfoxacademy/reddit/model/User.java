@@ -21,6 +21,7 @@ public class User {
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST ,orphanRemoval = true)
   private List<Post> posts;
+
   @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
   private List<Rating> ratings;
 

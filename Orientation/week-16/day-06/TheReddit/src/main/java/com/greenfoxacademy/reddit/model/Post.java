@@ -30,6 +30,8 @@ public class Post {
   @ManyToOne
   @JoinColumn
   private User user;
+
+
   @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
   private List<Rating> ratings;
 
